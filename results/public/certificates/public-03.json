@@ -1,0 +1,350 @@
+{
+  "blocks": [
+    [
+      0,
+      1
+    ]
+  ],
+  "charged_search_obligations": 12,
+  "chases": [
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "EMP",
+          "terms": [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            1
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:d0",
+            "v:d1"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            2
+          ],
+          "rel": "EMP",
+          "terms": [
+            "v:f0",
+            "v:f1",
+            "v:f2",
+            "v:f3",
+            "v:f4",
+            "v:f5",
+            "v:f6",
+            "v:f7",
+            "v:f8"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:e7",
+            "n:3:1"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            2,
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:f7",
+            "n:4:1"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "v:e7",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "v:d0"
+        },
+        {
+          "left": "v:d0",
+          "reason": [
+            "guard",
+            1
+          ],
+          "right": "v:f7"
+        },
+        {
+          "left": "n:3:1",
+          "reason": [
+            "key",
+            3,
+            1,
+            0,
+            1
+          ],
+          "right": "v:d1"
+        },
+        {
+          "left": "n:4:1",
+          "reason": [
+            "key",
+            4,
+            1,
+            0,
+            1
+          ],
+          "right": "v:d1"
+        }
+      ],
+      "unsat": false
+    },
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "EMP",
+          "terms": [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            1
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:d0",
+            "v:d1"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            2
+          ],
+          "rel": "EMP",
+          "terms": [
+            "v:f0",
+            "v:f1",
+            "v:f2",
+            "v:f3",
+            "v:f4",
+            "v:f5",
+            "v:f6",
+            "v:f7",
+            "v:f8"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:e7",
+            "n:3:1"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            2,
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:f7",
+            "n:4:1"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "v:e7",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "v:d0"
+        },
+        {
+          "left": "v:d0",
+          "reason": [
+            "guard",
+            1
+          ],
+          "right": "v:f7"
+        },
+        {
+          "left": "n:3:1",
+          "reason": [
+            "key",
+            3,
+            1,
+            0,
+            1
+          ],
+          "right": "v:d1"
+        },
+        {
+          "left": "n:4:1",
+          "reason": [
+            "key",
+            4,
+            1,
+            0,
+            1
+          ],
+          "right": "v:d1"
+        }
+      ],
+      "unsat": false
+    }
+  ],
+  "containment": {
+    "0,0": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "v:d0",
+        "v:d1": "n:3:1",
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "v:e3",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:d0",
+        "v:e8": "v:e8",
+        "v:f0": "v:e0",
+        "v:f1": "v:e1",
+        "v:f2": "v:e2",
+        "v:f3": "v:e3",
+        "v:f4": "v:e4",
+        "v:f5": "v:e5",
+        "v:f6": "v:e6",
+        "v:f7": "v:d0",
+        "v:f8": "v:e8"
+      }
+    },
+    "0,1": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "v:d0",
+        "v:d1": "n:3:1",
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "v:e3",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:d0",
+        "v:e8": "v:e8",
+        "v:f0": "v:e0",
+        "v:f1": "v:e1",
+        "v:f2": "v:e2",
+        "v:f3": "v:e3",
+        "v:f4": "v:e4",
+        "v:f5": "v:e5",
+        "v:f6": "v:e6",
+        "v:f7": "v:d0",
+        "v:f8": "v:e8"
+      }
+    },
+    "1,0": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "v:d0",
+        "v:d1": "n:3:1",
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "v:e3",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:d0",
+        "v:e8": "v:e8",
+        "v:f0": "v:e0",
+        "v:f1": "v:e1",
+        "v:f2": "v:e2",
+        "v:f3": "v:e3",
+        "v:f4": "v:e4",
+        "v:f5": "v:e5",
+        "v:f6": "v:e6",
+        "v:f7": "v:d0",
+        "v:f8": "v:e8"
+      }
+    },
+    "1,1": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "v:d0",
+        "v:d1": "n:3:1",
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "v:e3",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:d0",
+        "v:e8": "v:e8",
+        "v:f0": "v:e0",
+        "v:f1": "v:e1",
+        "v:f2": "v:e2",
+        "v:f3": "v:e3",
+        "v:f4": "v:e4",
+        "v:f5": "v:e5",
+        "v:f6": "v:e6",
+        "v:f7": "v:d0",
+        "v:f8": "v:e8"
+      }
+    }
+  },
+  "refinement_sizes": [
+    1
+  ],
+  "separators": [],
+  "syntactic_quotient_size": 2
+}

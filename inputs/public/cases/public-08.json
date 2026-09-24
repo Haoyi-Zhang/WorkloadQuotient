@@ -1,0 +1,146 @@
+{
+  "alphabet": [
+    "swap"
+  ],
+  "initial": 0,
+  "provenance": {
+    "adaptation": "Column references are translated positionally into the finite CQ representation; aliases are logical variable names. The SQL text itself is retained unchanged for engine replay.",
+    "admission_reason": "redundant key lookup",
+    "id": "public-08",
+    "source_lines": [
+      360,
+      361
+    ],
+    "source_sql": [
+      "SELECT 1 FROM EMP AS EMP INNER JOIN DEPT AS DEPT ON EMP.DEPTNO = DEPT.DEPTNO",
+      "SELECT 1 FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO INNER JOIN DEPT AS DEPT1 ON EMP0.DEPTNO = DEPT1.DEPTNO"
+    ]
+  },
+  "queries": [
+    {
+      "atoms": [
+        [
+          "EMP",
+          [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:e7",
+          "v:d0"
+        ]
+      ],
+      "head": [
+        "c:1"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "EMP",
+          [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:g0",
+            "v:g1"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:e7",
+          "v:d0"
+        ],
+        [
+          "v:e7",
+          "v:g0"
+        ]
+      ],
+      "head": [
+        "c:1"
+      ]
+    }
+  ],
+  "schema": {
+    "relations": {
+      "DEPT": {
+        "arity": 2,
+        "fks": [],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      },
+      "EMP": {
+        "arity": 9,
+        "fks": [
+          {
+            "columns": [
+              0
+            ],
+            "source": [
+              7
+            ],
+            "target": "DEPT"
+          }
+        ],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "states": [
+    {
+      "next": {
+        "swap": 1
+      },
+      "query": 0
+    },
+    {
+      "next": {
+        "swap": 0
+      },
+      "query": 1
+    }
+  ]
+}

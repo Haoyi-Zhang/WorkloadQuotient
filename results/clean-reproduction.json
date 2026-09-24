@@ -1,0 +1,83 @@
+{
+  "all_scientific_results_equal": true,
+  "clean_input_mode": "fresh output directory from the final working artifact; matching archive-extraction rechecks are documented in CURRENT-STATE.md",
+  "commands": [
+    {
+      "command": "regression-tests",
+      "cpu_seconds": 1.114833,
+      "log": "logs/regression-tests.txt",
+      "returncode": 0,
+      "wall_seconds": 1.166675911000084
+    },
+    {
+      "command": "cascade",
+      "cpu_seconds": 1.3413370000000002,
+      "log": "logs/cascade.txt",
+      "returncode": 0,
+      "wall_seconds": 1.3715490480001336
+    },
+    {
+      "command": "graphs",
+      "cpu_seconds": 1.2492449999999997,
+      "log": "logs/graphs.txt",
+      "returncode": 0,
+      "wall_seconds": 1.2690402890000314
+    },
+    {
+      "command": "public-certificates",
+      "cpu_seconds": 0.8810189999999999,
+      "log": "logs/public-certificates.txt",
+      "returncode": 0,
+      "wall_seconds": 0.9196488840000256
+    },
+    {
+      "command": "sqlite-replay",
+      "cpu_seconds": 0.8725370000000005,
+      "log": "logs/sqlite-replay.txt",
+      "returncode": 0,
+      "wall_seconds": 0.9171506129998761
+    }
+  ],
+  "comparison_excludes_only": [
+    "cpu_seconds",
+    "peak_rss_kib",
+    "wall_seconds"
+  ],
+  "conservative_main_reproduction_obligations": 103007,
+  "counts": {
+    "base_graph_controls": 8,
+    "cascade_cases": 16,
+    "coloring_assignments": 203,
+    "family_block_pair_separators": 288,
+    "family_directed_containment_entries": 768,
+    "figure_rows_rebuilt": 6,
+    "frozen_certificates_rechecked": 56,
+    "illegal_graph_folds_rejected": 1,
+    "image_partitions": 3960,
+    "key_ablation_instances": 24,
+    "mutated_certificates_rejected": 16,
+    "nonisomorphic_minimum_databases": 2,
+    "producer_charged_search_obligations": 3744,
+    "public_block_pair_separators": 0,
+    "public_directed_containment_entries": 32,
+    "public_sql_pairs": 8,
+    "regression_test_methods": 42,
+    "sqlite_legal_databases": 64,
+    "sqlite_query_executions": 1024,
+    "tiny_legal_valuations": 2583,
+    "tiny_query_evaluations": 15498,
+    "unchanged_public_sql_queries": 16
+  },
+  "cpu_seconds": 5.870440726,
+  "duckdb_replay": "NOT_RUN_PACKAGE_UNAVAILABLE",
+  "largest_child_peak_rss_kib": 97188,
+  "parent_peak_rss_kib": 108324,
+  "process_swap_kib": 0,
+  "publication_readiness": "INTERNAL_SCIENTIFIC_PACKET_COMPLETE_EXTERNAL_SUBMISSION_NOT_CERTIFIED",
+  "scientific_files_compared": 246,
+  "scope": "Finite code, exact generated evidence, public-fragment certificates, and an independent SQLite result-equality control; not an external review or a mechanized general proof.",
+  "sqlite_replay": "PASSED",
+  "status": "FINITE_REPRODUCTION_PASSED",
+  "wall_seconds": 6.047164333999945,
+  "workers": 1
+}

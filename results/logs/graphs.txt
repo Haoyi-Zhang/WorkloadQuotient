@@ -1,0 +1,24 @@
+{
+  "result": {
+    "adjacent_color_mutations_rejected": 1,
+    "all_exact_minima_match_color_oracle": true,
+    "checked_instances": 32,
+    "coloring_assignments": 203,
+    "cpu_seconds": 0.27556959499999995,
+    "directed_containment_checks": 512,
+    "equivalence_and_signature_obligations": 1280,
+    "graph_families": 8,
+    "image_partitions": 3960,
+    "key_ablation_instances": 24,
+    "nonisomorphic_optima": 2,
+    "peak_rss_kib": 95012,
+    "process_swap_kib": 0,
+    "producer_charged_search_obligations": 2496,
+    "randomness": "none",
+    "scope": "Generated bounded instances; not a database-engine replay or proof of the general theorems.",
+    "separator_checks": 192,
+    "wall_seconds": 0.2790988179995111,
+    "workers": 1
+  },
+  "status": "ACCEPTED"
+}

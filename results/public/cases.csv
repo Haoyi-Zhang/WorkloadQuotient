@@ -1,0 +1,9 @@
+id,source_line_a,source_line_b,query_a_atoms,query_b_atoms,reachable_states,quotient_states,equivalent_both_directions,admission_reason
+public-01,46,47,2,2,2,1,True,comma join versus explicit INNER JOIN
+public-02,78,79,1,1,2,1,True,constant propagation through an equality guard
+public-03,90,91,3,3,2,1,True,join notation and alias renaming
+public-04,118,119,3,5,2,1,True,redundant self-joins on declared keys
+public-05,120,121,2,2,2,1,True,Boolean-style constant projection with join notation change
+public-06,140,141,1,1,2,1,True,flattenable SPJ subquery and duplicate equality guard
+public-07,208,209,2,2,2,1,True,alpha-renaming only
+public-08,360,361,2,3,2,1,True,redundant key lookup

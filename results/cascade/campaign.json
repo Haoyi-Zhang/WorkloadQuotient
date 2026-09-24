@@ -1,0 +1,19 @@
+{
+  "boundary_probes_without_materialization": 5,
+  "cpu_seconds": 0.3959327210000001,
+  "directed_family_containment_checks": 256,
+  "duckdb_replay": "NOT_RUN_UNAVAILABLE",
+  "equivalence_and_signature_obligations": 676,
+  "families": 16,
+  "family_separator_checks": 96,
+  "mutations_rejected": 16,
+  "mutations_tested": 16,
+  "peak_rss_kib": 96176,
+  "process_swap_kib": 0,
+  "producer_charged_search_obligations": 1248,
+  "randomness": "None; all inputs and enumeration order are deterministic.",
+  "tiny_legal_valuations": 2583,
+  "tiny_query_evaluations": 15498,
+  "wall_seconds": 0.3997394580001128,
+  "workers": 1
+}

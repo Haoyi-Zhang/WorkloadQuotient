@@ -1,0 +1,98 @@
+{
+  "blocks": [
+    [
+      0,
+      1
+    ]
+  ],
+  "charged_search_obligations": 12,
+  "chases": [
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:d0",
+            "v:d1"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "v:d0",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "c:10"
+        }
+      ],
+      "unsat": false
+    },
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:d0",
+            "v:d1"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "v:d0",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "c:10"
+        }
+      ],
+      "unsat": false
+    }
+  ],
+  "containment": {
+    "0,0": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "c:10",
+        "v:d1": "v:d1"
+      }
+    },
+    "0,1": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "c:10",
+        "v:d1": "v:d1"
+      }
+    },
+    "1,0": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "c:10",
+        "v:d1": "v:d1"
+      }
+    },
+    "1,1": {
+      "kind": "map",
+      "mapping": {
+        "v:d0": "c:10",
+        "v:d1": "v:d1"
+      }
+    }
+  },
+  "refinement_sizes": [
+    1
+  ],
+  "separators": [],
+  "syntactic_quotient_size": 2
+}

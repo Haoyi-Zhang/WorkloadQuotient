@@ -1,0 +1,200 @@
+{
+  "alphabet": [
+    "swap"
+  ],
+  "initial": 0,
+  "provenance": {
+    "adaptation": "Column references are translated positionally into the finite CQ representation; aliases are logical variable names. The SQL text itself is retained unchanged for engine replay.",
+    "admission_reason": "redundant self-joins on declared keys",
+    "id": "public-04",
+    "source_lines": [
+      118,
+      119
+    ],
+    "source_sql": [
+      "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT, EMP AS EMP0 WHERE EMP.DEPTNO = DEPT.DEPTNO AND EMP.EMPNO = EMP0.EMPNO",
+      "SELECT EMP1.ENAME FROM EMP AS EMP1 INNER JOIN DEPT AS DEPT0 ON EMP1.DEPTNO = DEPT0.DEPTNO INNER JOIN EMP AS EMP2 ON EMP1.EMPNO = EMP2.EMPNO INNER JOIN DEPT AS DEPT1 ON EMP1.DEPTNO = DEPT1.DEPTNO INNER JOIN EMP AS EMP3 ON EMP1.EMPNO = EMP3.EMPNO"
+    ]
+  },
+  "queries": [
+    {
+      "atoms": [
+        [
+          "EMP",
+          [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ],
+        [
+          "EMP",
+          [
+            "v:f0",
+            "v:f1",
+            "v:f2",
+            "v:f3",
+            "v:f4",
+            "v:f5",
+            "v:f6",
+            "v:f7",
+            "v:f8"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:e7",
+          "v:d0"
+        ],
+        [
+          "v:e0",
+          "v:f0"
+        ]
+      ],
+      "head": [
+        "v:e1"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "EMP",
+          [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ],
+        [
+          "EMP",
+          [
+            "v:f0",
+            "v:f1",
+            "v:f2",
+            "v:f3",
+            "v:f4",
+            "v:f5",
+            "v:f6",
+            "v:f7",
+            "v:f8"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:g0",
+            "v:g1"
+          ]
+        ],
+        [
+          "EMP",
+          [
+            "v:h0",
+            "v:h1",
+            "v:h2",
+            "v:h3",
+            "v:h4",
+            "v:h5",
+            "v:h6",
+            "v:h7",
+            "v:h8"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:e7",
+          "v:d0"
+        ],
+        [
+          "v:e0",
+          "v:f0"
+        ],
+        [
+          "v:e7",
+          "v:g0"
+        ],
+        [
+          "v:e0",
+          "v:h0"
+        ]
+      ],
+      "head": [
+        "v:e1"
+      ]
+    }
+  ],
+  "schema": {
+    "relations": {
+      "DEPT": {
+        "arity": 2,
+        "fks": [],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      },
+      "EMP": {
+        "arity": 9,
+        "fks": [
+          {
+            "columns": [
+              0
+            ],
+            "source": [
+              7
+            ],
+            "target": "DEPT"
+          }
+        ],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "states": [
+    {
+      "next": {
+        "swap": 1
+      },
+      "query": 0
+    },
+    {
+      "next": {
+        "swap": 0
+      },
+      "query": 1
+    }
+  ]
+}

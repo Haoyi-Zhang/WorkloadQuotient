@@ -1,0 +1,16 @@
+{
+  "pilot": "four-cycle-image-minimization",
+  "quotient": {
+    "reachable_states": 8,
+    "quotient_states": 4,
+    "separator_pairs": 6,
+    "maximum_trace_length": 1
+  },
+  "minimum_with_secondary_keys": 13,
+  "minimum_without_secondary_keys": 12,
+  "partitions_each": 151,
+  "cpu_seconds": 0.014595000000000025,
+  "peak_rss_kib": 93224,
+  "workers": 1,
+  "status": "FINITE_CHECK_PASSED"
+}

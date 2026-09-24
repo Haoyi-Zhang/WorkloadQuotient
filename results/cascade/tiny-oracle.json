@@ -1,0 +1,171 @@
+{
+  "complete_criterion": [
+    [
+      true,
+      true,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      false,
+      false,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      false,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      false,
+      true,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      false,
+      false,
+      true,
+      false
+    ],
+    [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true
+    ]
+  ],
+  "domains": [
+    {
+      "candidate_databases": 81,
+      "directed_containment": [
+        [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ]
+      ],
+      "domain_size": 2,
+      "legal_databases": 53,
+      "matches_complete_criterion": true
+    },
+    {
+      "candidate_databases": 4096,
+      "directed_containment": [
+        [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          false,
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ]
+      ],
+      "domain_size": 3,
+      "legal_databases": 2530,
+      "matches_complete_criterion": true
+    }
+  ],
+  "empty_only_false_equivalence_pairs": 14,
+  "legal_databases": 2583,
+  "matches_complete_criterion": true,
+  "query_evaluations": 15498,
+  "scope": "Exact only for the recorded finite domains; universal claims use the proof, not this enumeration."
+}

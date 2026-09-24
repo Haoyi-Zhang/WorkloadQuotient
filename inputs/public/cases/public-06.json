@@ -1,0 +1,111 @@
+{
+  "alphabet": [
+    "swap"
+  ],
+  "initial": 0,
+  "provenance": {
+    "adaptation": "Column references are translated positionally into the finite CQ representation; aliases are logical variable names. The SQL text itself is retained unchanged for engine replay.",
+    "admission_reason": "flattenable SPJ subquery and duplicate equality guard",
+    "id": "public-06",
+    "source_lines": [
+      140,
+      141
+    ],
+    "source_sql": [
+      "SELECT t.NAME FROM (SELECT * FROM DEPT AS DEPT WHERE DEPT.DEPTNO = 10) AS t WHERE t.DEPTNO = 10",
+      "SELECT DEPT0.NAME FROM DEPT AS DEPT0 WHERE DEPT0.DEPTNO = 10"
+    ]
+  },
+  "queries": [
+    {
+      "atoms": [
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:d0",
+          "c:10"
+        ],
+        [
+          "v:d0",
+          "c:10"
+        ]
+      ],
+      "head": [
+        "v:d1"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:d0",
+          "c:10"
+        ]
+      ],
+      "head": [
+        "v:d1"
+      ]
+    }
+  ],
+  "schema": {
+    "relations": {
+      "DEPT": {
+        "arity": 2,
+        "fks": [],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      },
+      "EMP": {
+        "arity": 9,
+        "fks": [
+          {
+            "columns": [
+              0
+            ],
+            "source": [
+              7
+            ],
+            "target": "DEPT"
+          }
+        ],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "states": [
+    {
+      "next": {
+        "swap": 1
+      },
+      "query": 0
+    },
+    {
+      "next": {
+        "swap": 0
+      },
+      "query": 1
+    }
+  ]
+}

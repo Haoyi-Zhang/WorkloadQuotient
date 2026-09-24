@@ -1,0 +1,164 @@
+{
+  "blocks": [
+    [
+      0,
+      1
+    ]
+  ],
+  "charged_search_obligations": 12,
+  "chases": [
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "EMP",
+          "terms": [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:e7",
+            "n:1:1"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "v:e3",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "c:10"
+        }
+      ],
+      "unsat": false
+    },
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "EMP",
+          "terms": [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            0
+          ],
+          "rel": "DEPT",
+          "terms": [
+            "v:e7",
+            "n:1:1"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "v:e3",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "c:10"
+        }
+      ],
+      "unsat": false
+    }
+  ],
+  "containment": {
+    "0,0": {
+      "kind": "map",
+      "mapping": {
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "c:10",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:e7",
+        "v:e8": "v:e8"
+      }
+    },
+    "0,1": {
+      "kind": "map",
+      "mapping": {
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "c:10",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:e7",
+        "v:e8": "v:e8"
+      }
+    },
+    "1,0": {
+      "kind": "map",
+      "mapping": {
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "c:10",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:e7",
+        "v:e8": "v:e8"
+      }
+    },
+    "1,1": {
+      "kind": "map",
+      "mapping": {
+        "v:e0": "v:e0",
+        "v:e1": "v:e1",
+        "v:e2": "v:e2",
+        "v:e3": "c:10",
+        "v:e4": "v:e4",
+        "v:e5": "v:e5",
+        "v:e6": "v:e6",
+        "v:e7": "v:e7",
+        "v:e8": "v:e8"
+      }
+    }
+  },
+  "refinement_sizes": [
+    1
+  ],
+  "separators": [],
+  "syntactic_quotient_size": 2
+}

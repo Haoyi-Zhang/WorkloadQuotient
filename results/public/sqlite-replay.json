@@ -1,0 +1,70 @@
+{
+  "all_bag_results_equal": true,
+  "all_set_results_equal": true,
+  "engine": "sqlite",
+  "engine_version": "3.46.1",
+  "legal_databases": 64,
+  "pair_statistics": {
+    "public-01": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 4,
+      "set_equal": 64
+    },
+    "public-02": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 4,
+      "max_set_rows": 1,
+      "set_equal": 64
+    },
+    "public-03": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 64,
+      "max_set_rows": 4,
+      "set_equal": 64
+    },
+    "public-04": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 4,
+      "set_equal": 64
+    },
+    "public-05": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 1,
+      "set_equal": 64
+    },
+    "public-06": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 1,
+      "max_set_rows": 1,
+      "set_equal": 64
+    },
+    "public-07": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 64,
+      "max_set_rows": 1,
+      "set_equal": 64
+    },
+    "public-08": {
+      "bag_equal": 64,
+      "databases": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 1,
+      "set_equal": 64
+    }
+  },
+  "public_pairs": 8,
+  "query_executions": 1024,
+  "scope": "Deterministic generated legal Calcite EMP/DEPT databases; result equality only, no latency or optimizer claim.",
+  "seed": 20260918,
+  "status": "ENGINE_REPLAY_PASSED"
+}

@@ -1,0 +1,22 @@
+{
+  "pilot": "depth-six-two-key-cascade",
+  "result": {
+    "reachable_states": 8,
+    "quotient_states": 4,
+    "separator_pairs": 6,
+    "maximum_trace_length": 1
+  },
+  "minimum_witness_tuples": 127,
+  "symbolic_records_per_query": [
+    127,
+    190,
+    127,
+    190
+  ],
+  "negative_control_rejected": "non-separating database/trace",
+  "cpu_seconds": 0.056397591000000025,
+  "wall_seconds": 0.052618070000107764,
+  "peak_rss_kib": 94888,
+  "workers": 1,
+  "process_swap_kib": 0
+}

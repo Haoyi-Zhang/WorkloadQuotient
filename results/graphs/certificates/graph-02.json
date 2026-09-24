@@ -1,0 +1,502 @@
+{
+  "blocks": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      4,
+      5
+    ],
+    [
+      6,
+      7
+    ]
+  ],
+  "charged_search_obligations": 78,
+  "chases": [
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "T0",
+          "terms": [
+            "v:c0",
+            "v:c1"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            1
+          ],
+          "rel": "T1",
+          "terms": [
+            "v:c1",
+            "v:c2"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            0
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c0"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            1
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c1"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            1,
+            0
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c1"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            1,
+            1
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c2"
+          ]
+        }
+      ],
+      "unions": [],
+      "unsat": false
+    },
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "T0",
+          "terms": [
+            "v:c0",
+            "v:c1"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            1
+          ],
+          "rel": "T1",
+          "terms": [
+            "v:c1",
+            "v:c2"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            2
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c0"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            0
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c0"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            0,
+            1
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c1"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            1,
+            0
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c1"
+          ]
+        },
+        {
+          "origin": [
+            "fk",
+            1,
+            1
+          ],
+          "rel": "C",
+          "terms": [
+            "v:c2"
+          ]
+        }
+      ],
+      "unions": [],
+      "unsat": false
+    },
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "C",
+          "terms": [
+            "v:z"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "c:0",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "c:1"
+        }
+      ],
+      "unsat": true
+    },
+    {
+      "rows": [
+        {
+          "origin": [
+            "seed",
+            0
+          ],
+          "rel": "C",
+          "terms": [
+            "v:z"
+          ]
+        },
+        {
+          "origin": [
+            "seed",
+            1
+          ],
+          "rel": "C",
+          "terms": [
+            "v:w"
+          ]
+        }
+      ],
+      "unions": [
+        {
+          "left": "c:0",
+          "reason": [
+            "guard",
+            0
+          ],
+          "right": "c:1"
+        }
+      ],
+      "unsat": true
+    }
+  ],
+  "containment": {
+    "0,0": {
+      "kind": "map",
+      "mapping": {
+        "v:c0": "v:c0",
+        "v:c1": "v:c1",
+        "v:c2": "v:c2"
+      }
+    },
+    "0,1": {
+      "kind": "map",
+      "mapping": {
+        "v:c0": "v:c0",
+        "v:c1": "v:c1",
+        "v:c2": "v:c2"
+      }
+    },
+    "0,2": null,
+    "0,3": null,
+    "1,0": {
+      "kind": "map",
+      "mapping": {
+        "v:c0": "v:c0",
+        "v:c1": "v:c1",
+        "v:c2": "v:c2"
+      }
+    },
+    "1,1": {
+      "kind": "map",
+      "mapping": {
+        "v:c0": "v:c0",
+        "v:c1": "v:c1",
+        "v:c2": "v:c2"
+      }
+    },
+    "1,2": null,
+    "1,3": null,
+    "2,0": {
+      "kind": "vacuous"
+    },
+    "2,1": {
+      "kind": "vacuous"
+    },
+    "2,2": {
+      "kind": "vacuous"
+    },
+    "2,3": {
+      "kind": "vacuous"
+    },
+    "3,0": {
+      "kind": "vacuous"
+    },
+    "3,1": {
+      "kind": "vacuous"
+    },
+    "3,2": {
+      "kind": "vacuous"
+    },
+    "3,3": {
+      "kind": "vacuous"
+    }
+  },
+  "refinement_sizes": [
+    2,
+    4
+  ],
+  "separators": [
+    {
+      "blocks": [
+        0,
+        1
+      ],
+      "database": {
+        "C": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ],
+        "T0": [
+          [
+            2,
+            3
+          ]
+        ],
+        "T1": [
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "word": [
+        "next"
+      ]
+    },
+    {
+      "blocks": [
+        0,
+        2
+      ],
+      "database": {
+        "C": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ],
+        "T0": [
+          [
+            2,
+            3
+          ]
+        ],
+        "T1": [
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "word": []
+    },
+    {
+      "blocks": [
+        0,
+        3
+      ],
+      "database": {
+        "C": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ],
+        "T0": [
+          [
+            2,
+            3
+          ]
+        ],
+        "T1": [
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "word": []
+    },
+    {
+      "blocks": [
+        1,
+        2
+      ],
+      "database": {
+        "C": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ],
+        "T0": [
+          [
+            2,
+            3
+          ]
+        ],
+        "T1": [
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "word": []
+    },
+    {
+      "blocks": [
+        1,
+        3
+      ],
+      "database": {
+        "C": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ],
+        "T0": [
+          [
+            2,
+            3
+          ]
+        ],
+        "T1": [
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "word": []
+    },
+    {
+      "blocks": [
+        2,
+        3
+      ],
+      "database": {
+        "C": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ],
+        "T0": [
+          [
+            2,
+            3
+          ]
+        ],
+        "T1": [
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "word": [
+        "next"
+      ]
+    }
+  ],
+  "syntactic_quotient_size": 8
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "case": "delete-required-FK-tuple",
+    "reason": "ground FK violation",
+    "rejected": true
+  },
+  {
+    "case": "collide-identifier-key",
+    "reason": "ground key violation",
+    "rejected": true
+  },
+  {
+    "case": "empty-separating-database",
+    "reason": "non-separating database/trace",
+    "rejected": true
+  },
+  {
+    "case": "shorten-distinguishing-word",
+    "reason": "non-separating database/trace",
+    "rejected": true
+  },
+  {
+    "case": "merge-current-equal-future-distinct",
+    "reason": "not a congruence",
+    "rejected": true
+  },
+  {
+    "case": "split-equivalent-states",
+    "reason": "missing minimality witnesses",
+    "rejected": true
+  },
+  {
+    "case": "remove-positive-containment",
+    "reason": "false non-containment",
+    "rejected": true
+  },
+  {
+    "case": "corrupt-output-map",
+    "reason": "mapping range",
+    "rejected": true
+  },
+  {
+    "case": "omit-chase-FK-expansion",
+    "reason": "incomplete FK unfolding",
+    "rejected": true
+  },
+  {
+    "case": "forge-unsatisfiable-query",
+    "reason": "unjustified unsatisfiability",
+    "rejected": true
+  },
+  {
+    "case": "omit-reachable-state",
+    "reason": "partition coverage",
+    "rejected": true
+  },
+  {
+    "case": "change-trusted-transition",
+    "reason": "not a congruence",
+    "rejected": true
+  },
+  {
+    "case": "change-trusted-output",
+    "reason": "mapping output",
+    "rejected": true
+  },
+  {
+    "case": "change-trusted-FK-columns",
+    "reason": "FK expansion",
+    "rejected": true
+  },
+  {
+    "case": "false-negative-containment",
+    "reason": "false non-containment",
+    "rejected": true
+  },
+  {
+    "case": "noncanonical-integer",
+    "reason": "noncanonical integer",
+    "rejected": true
+  }
+]

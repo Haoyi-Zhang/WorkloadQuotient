@@ -1,0 +1,107 @@
+{
+  "commit": "dcc2a91d8971a4c4d30b055f99d7d8428a1b754b",
+  "license": "Apache-2.0",
+  "pairs": [
+    {
+      "id": "public-01",
+      "reason": "comma join versus explicit INNER JOIN",
+      "source_lines": [
+        46,
+        47
+      ],
+      "sql": [
+        "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT WHERE EMP.DEPTNO = DEPT.DEPTNO",
+        "SELECT EMP0.ENAME FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO"
+      ]
+    },
+    {
+      "id": "public-02",
+      "reason": "constant propagation through an equality guard",
+      "source_lines": [
+        78,
+        79
+      ],
+      "sql": [
+        "SELECT EMP.MGR FROM EMP AS EMP WHERE EMP.MGR = 10",
+        "SELECT 10 AS MGR FROM EMP AS EMP0 WHERE EMP0.MGR = 10"
+      ]
+    },
+    {
+      "id": "public-03",
+      "reason": "join notation and alias renaming",
+      "source_lines": [
+        90,
+        91
+      ],
+      "sql": [
+        "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT, EMP AS EMP0 WHERE EMP.DEPTNO = DEPT.DEPTNO AND DEPT.DEPTNO = EMP0.DEPTNO",
+        "SELECT EMP1.ENAME FROM EMP AS EMP1 INNER JOIN DEPT AS DEPT0 ON EMP1.DEPTNO = DEPT0.DEPTNO INNER JOIN EMP AS EMP2 ON DEPT0.DEPTNO = EMP2.DEPTNO"
+      ]
+    },
+    {
+      "id": "public-04",
+      "reason": "redundant self-joins on declared keys",
+      "source_lines": [
+        118,
+        119
+      ],
+      "sql": [
+        "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT, EMP AS EMP0 WHERE EMP.DEPTNO = DEPT.DEPTNO AND EMP.EMPNO = EMP0.EMPNO",
+        "SELECT EMP1.ENAME FROM EMP AS EMP1 INNER JOIN DEPT AS DEPT0 ON EMP1.DEPTNO = DEPT0.DEPTNO INNER JOIN EMP AS EMP2 ON EMP1.EMPNO = EMP2.EMPNO INNER JOIN DEPT AS DEPT1 ON EMP1.DEPTNO = DEPT1.DEPTNO INNER JOIN EMP AS EMP3 ON EMP1.EMPNO = EMP3.EMPNO"
+      ]
+    },
+    {
+      "id": "public-05",
+      "reason": "Boolean-style constant projection with join notation change",
+      "source_lines": [
+        120,
+        121
+      ],
+      "sql": [
+        "SELECT 1 FROM EMP AS EMP INNER JOIN DEPT AS DEPT ON EMP.DEPTNO = DEPT.DEPTNO",
+        "SELECT 1 FROM EMP AS EMP0, DEPT AS DEPT0 WHERE EMP0.DEPTNO = DEPT0.DEPTNO"
+      ]
+    },
+    {
+      "id": "public-06",
+      "reason": "flattenable SPJ subquery and duplicate equality guard",
+      "source_lines": [
+        140,
+        141
+      ],
+      "sql": [
+        "SELECT t.NAME FROM (SELECT * FROM DEPT AS DEPT WHERE DEPT.DEPTNO = 10) AS t WHERE t.DEPTNO = 10",
+        "SELECT DEPT0.NAME FROM DEPT AS DEPT0 WHERE DEPT0.DEPTNO = 10"
+      ]
+    },
+    {
+      "id": "public-07",
+      "reason": "alpha-renaming only",
+      "source_lines": [
+        208,
+        209
+      ],
+      "sql": [
+        "SELECT 1 FROM EMP AS EMP INNER JOIN EMP AS EMP0 ON EMP.DEPTNO = EMP0.DEPTNO",
+        "SELECT 1 FROM EMP AS EMP1 INNER JOIN EMP AS EMP2 ON EMP1.DEPTNO = EMP2.DEPTNO"
+      ]
+    },
+    {
+      "id": "public-08",
+      "reason": "redundant key lookup",
+      "source_lines": [
+        360,
+        361
+      ],
+      "sql": [
+        "SELECT 1 FROM EMP AS EMP INNER JOIN DEPT AS DEPT ON EMP.DEPTNO = DEPT.DEPTNO",
+        "SELECT 1 FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO INNER JOIN DEPT AS DEPT1 ON EMP0.DEPTNO = DEPT1.DEPTNO"
+      ]
+    }
+  ],
+  "schema_path": "sqlsolver_data/schemas/calcite_test.base.schema.sql",
+  "selection_rule": "Scan public Calcite equivalence pairs in ascending line order; admit pairs whose two queries normalize without semantic rewrites to equality-only set SPJ over base EMP/DEPT relations, allowing alias renaming, duplicate equalities, and flattening of a projection/selection-only derived table; require alpha-acyclic normalized queries and the published primary-key/foreign-key schema. Stop after eight admitted pairs.",
+  "semantics": "The theorem model uses set semantics. Engine replay reports both sorted bags and deduplicated sets; the eight selected pairs agree under both on the deterministic legal database suite.",
+  "source_path": "sqlsolver_data/calcite/calcite_tests",
+  "source_repository": "https://github.com/SJTU-IPADS/SQLSolver"
+}

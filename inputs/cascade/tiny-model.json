@@ -1,0 +1,176 @@
+{
+  "alphabet": [
+    "step"
+  ],
+  "initial": 0,
+  "queries": [
+    {
+      "atoms": [
+        [
+          "R",
+          [
+            "v:x",
+            "v:y"
+          ]
+        ]
+      ],
+      "head": [
+        "v:x"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "R",
+          [
+            "v:x",
+            "v:y"
+          ]
+        ],
+        [
+          "S",
+          [
+            "v:y",
+            "v:z"
+          ]
+        ]
+      ],
+      "head": [
+        "v:x"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "R",
+          [
+            "v:x",
+            "v:y"
+          ]
+        ],
+        [
+          "S",
+          [
+            "v:y",
+            "c:0"
+          ]
+        ]
+      ],
+      "head": [
+        "v:x"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "R",
+          [
+            "v:x",
+            "c:0"
+          ]
+        ]
+      ],
+      "head": [
+        "v:x"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "R",
+          [
+            "v:x",
+            "c:1"
+          ]
+        ]
+      ],
+      "head": [
+        "v:x"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "S",
+          [
+            "v:x",
+            "v:z"
+          ]
+        ]
+      ],
+      "head": [
+        "v:x"
+      ]
+    }
+  ],
+  "schema": {
+    "relations": {
+      "R": {
+        "arity": 2,
+        "fks": [
+          {
+            "columns": [
+              0
+            ],
+            "source": [
+              1
+            ],
+            "target": "S"
+          }
+        ],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      },
+      "S": {
+        "arity": 2,
+        "fks": [],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "states": [
+    {
+      "next": {
+        "step": 1
+      },
+      "query": 0
+    },
+    {
+      "next": {
+        "step": 2
+      },
+      "query": 1
+    },
+    {
+      "next": {
+        "step": 3
+      },
+      "query": 2
+    },
+    {
+      "next": {
+        "step": 4
+      },
+      "query": 3
+    },
+    {
+      "next": {
+        "step": 5
+      },
+      "query": 4
+    },
+    {
+      "next": {
+        "step": 0
+      },
+      "query": 5
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "depth": 7,
+    "full_unfolding_records": 255,
+    "level_counts": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "minimum": 255,
+    "status": "BOUND_REJECTED_NOT_MATERIALIZED"
+  },
+  {
+    "depth": 8,
+    "full_unfolding_records": 511,
+    "level_counts": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "minimum": 511,
+    "status": "BOUND_REJECTED_NOT_MATERIALIZED"
+  },
+  {
+    "depth": 9,
+    "full_unfolding_records": 1023,
+    "level_counts": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "minimum": 1023,
+    "status": "BOUND_REJECTED_NOT_MATERIALIZED"
+  },
+  {
+    "depth": 10,
+    "full_unfolding_records": 2047,
+    "level_counts": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "minimum": 2047,
+    "status": "BOUND_REJECTED_NOT_MATERIALIZED"
+  },
+  {
+    "depth": 11,
+    "full_unfolding_records": 4095,
+    "level_counts": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048
+    ],
+    "minimum": 4095,
+    "status": "BOUND_REJECTED_NOT_MATERIALIZED"
+  }
+]

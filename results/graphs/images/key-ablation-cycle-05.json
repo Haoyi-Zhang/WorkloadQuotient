@@ -1,0 +1,392 @@
+{
+  "complete": true,
+  "database": {
+    "C": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "E0": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "E1": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "E2": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "E3": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ]
+    ],
+    "T0": [
+      [
+        0,
+        1
+      ]
+    ],
+    "T1": [
+      [
+        1,
+        0
+      ]
+    ],
+    "T2": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "fixed_constants": [
+    "c:0",
+    "c:1"
+  ],
+  "head": [],
+  "legal_images": 87,
+  "minimizing_partitions": 14,
+  "minimum": 13,
+  "partition": [
+    0,
+    1,
+    0,
+    0
+  ],
+  "partitions": 151,
+  "scope": "Exhaustive legal homomorphic images; theorem supplies global completeness.",
+  "separating_images": 87,
+  "source_chase": {
+    "rows": [
+      {
+        "origin": [
+          "seed",
+          0
+        ],
+        "rel": "T0",
+        "terms": [
+          "v:c0",
+          "v:c1"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          1
+        ],
+        "rel": "T1",
+        "terms": [
+          "v:c1",
+          "v:c2"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          2
+        ],
+        "rel": "T2",
+        "terms": [
+          "v:c2",
+          "v:c3"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          3
+        ],
+        "rel": "E0",
+        "terms": [
+          "c:0",
+          "v:c0",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          4
+        ],
+        "rel": "E0",
+        "terms": [
+          "c:1",
+          "v:c1",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          5
+        ],
+        "rel": "E1",
+        "terms": [
+          "c:0",
+          "v:c0",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          6
+        ],
+        "rel": "E1",
+        "terms": [
+          "c:1",
+          "v:c3",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          7
+        ],
+        "rel": "E2",
+        "terms": [
+          "c:0",
+          "v:c1",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          8
+        ],
+        "rel": "E2",
+        "terms": [
+          "c:1",
+          "v:c2",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          9
+        ],
+        "rel": "E3",
+        "terms": [
+          "c:0",
+          "v:c2",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          10
+        ],
+        "rel": "E3",
+        "terms": [
+          "c:1",
+          "v:c3",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          0,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c0"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          0,
+          1
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c1"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          1,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c1"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          1,
+          1
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c2"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          2,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c2"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          2,
+          1
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c3"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          3,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c0"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          4,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c1"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          5,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c0"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          6,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c3"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          7,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c1"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          8,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c2"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          9,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c2"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          10,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c3"
+        ]
+      }
+    ],
+    "unions": [],
+    "unsat": false
+  },
+  "source_names": [
+    "v:c0",
+    "v:c1",
+    "v:c2",
+    "v:c3"
+  ],
+  "status": "EXACT_MINIMUM"
+}

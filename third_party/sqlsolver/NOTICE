@@ -1,0 +1,7 @@
+Selected SQL query text and the Calcite test schema are derived from SQLSolver.
+Repository: https://github.com/SJTU-IPADS/SQLSolver
+Pinned commit: dcc2a91d8971a4c4d30b055f99d7d8428a1b754b
+Paths: sqlsolver_data/calcite/calcite_tests; sqlsolver_data/schemas/calcite_test.base.schema.sql
+License: Apache License 2.0 (copy in this directory).
+The selected SQL lines are unmodified; this project adds line labels, a conservative
+fragment adapter, generated legal data, and replay/checking code.

@@ -1,0 +1,10 @@
+{"legal": false, "partition": [0, 0], "rejection": "ground key violation", "tuples": 4}
+{"directed_separation": true, "legal": true, "partition": [0, 1], "rejection": null, "tuples": 5}
+{"directed_separation": true, "legal": true, "partition": [0, 2], "rejection": null, "tuples": 5}
+{"directed_separation": true, "legal": true, "partition": [1, 0], "rejection": null, "tuples": 5}
+{"legal": false, "partition": [1, 1], "rejection": "ground key violation", "tuples": 4}
+{"directed_separation": true, "legal": true, "partition": [1, 2], "rejection": null, "tuples": 5}
+{"directed_separation": true, "legal": true, "partition": [2, 0], "rejection": null, "tuples": 5}
+{"directed_separation": true, "legal": true, "partition": [2, 1], "rejection": null, "tuples": 5}
+{"legal": false, "partition": [2, 2], "rejection": "ground key violation", "tuples": 4}
+{"directed_separation": true, "legal": true, "partition": [2, 3], "rejection": null, "tuples": 5}

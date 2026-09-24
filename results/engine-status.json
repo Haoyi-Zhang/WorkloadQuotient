@@ -1,0 +1,25 @@
+{
+  "final_engine_evidence": {
+    "all_bag_results_equal": true,
+    "all_set_results_equal": true,
+    "engine": "SQLite",
+    "engine_version": "3.46.1",
+    "interpretation": "independent CPU-engine result-equality cross-check only; no latency or optimizer claim",
+    "legal_databases": 64,
+    "public_query_pairs": 8,
+    "query_executions": 1024,
+    "raw_result": "results/public/sqlite-replay.json",
+    "status": "PASSED",
+    "unchanged_sql_queries": 16
+  },
+  "nonexecuted_requested_engine": {
+    "acquisition": "No preinstalled package or CLI was present; package/download attempts were unavailable in the execution sandbox.",
+    "cli_available": false,
+    "engine": "DuckDB",
+    "interpretation": "SQLite and Python logical evaluators are not represented as DuckDB evidence.",
+    "public_query_replays": 0,
+    "python_import_available": false,
+    "status": "NOT_RUN_PACKAGE_UNAVAILABLE",
+    "substitute_engine_mislabeled": false
+  }
+}

@@ -1,0 +1,17 @@
+case,category,depth,retained_identifier_keys,relations,query_templates,reachable_states,syntax_states,current_output_classes,quotient_states,separating_pairs,max_trace_length,max_symbolic_records,largest_canonical_witness,minimum_witness,charged_search_obligations,cpu_seconds
+case-01,all-identifier-keys,1,1,2,4,8,8,2,4,6,1,4,3,3,78,0.0004591210000000068
+case-02,all-identifier-keys,2,1 2,3,4,8,8,2,4,6,1,10,7,7,78,0.0
+case-03,all-identifier-keys,3,1 2 3,4,4,8,8,2,4,6,1,22,15,15,78,0.00400189300000009
+case-04,all-identifier-keys,4,1 2 3 4,5,4,8,8,2,4,6,1,46,31,31,78,0.003996295999999955
+case-05,all-identifier-keys,5,1 2 3 4 5,6,4,8,8,2,4,6,1,94,63,63,78,0.019911891999999987
+case-06,all-identifier-keys,6,1 2 3 4 5 6,7,4,8,8,2,4,6,1,190,127,127,78,0.043982783000000025
+case-07,no-nonroot-identifier-keys,1,,2,4,8,8,2,4,6,1,4,3,3,78,0.004008694000000035
+case-08,no-nonroot-identifier-keys,2,,3,4,8,8,2,4,6,1,10,7,5,78,0.0
+case-09,no-nonroot-identifier-keys,3,,4,4,8,8,2,4,6,1,22,15,7,78,0.004001522999999896
+case-10,no-nonroot-identifier-keys,4,,5,4,8,8,2,4,6,1,46,31,9,78,0.0040000000000000036
+case-11,no-nonroot-identifier-keys,5,,6,4,8,8,2,4,6,1,94,63,11,78,0.011997399000000075
+case-12,no-nonroot-identifier-keys,6,,7,4,8,8,2,4,6,1,190,127,13,78,0.031899997999999874
+case-13,mixed-identifier-keys,6,1 3 5,7,4,8,8,2,4,6,1,190,127,19,78,0.039987980000000034
+case-14,mixed-identifier-keys,6,2 4 6,7,4,8,8,2,4,6,1,190,127,17,78,0.039990654000000125
+case-15,mixed-identifier-keys,6,1 2 4 5,7,4,8,8,2,4,6,1,190,127,29,78,0.035787981999999996
+case-16,mixed-identifier-keys,6,1 2 3 4 5,7,4,8,8,2,4,6,1,190,127,127,78,0.039997709999999964

@@ -1,0 +1,31 @@
+{
+  "database": {
+    "C": [
+      [
+        10
+      ]
+    ],
+    "T0": [
+      [
+        10,
+        10
+      ]
+    ],
+    "T1": [
+      [
+        10,
+        10
+      ]
+    ]
+  },
+  "expected_minimum": 3,
+  "oracle": {
+    "assignments_tested": 1,
+    "chromatic_number": 1,
+    "coloring": [
+      0,
+      0,
+      0
+    ]
+  }
+}

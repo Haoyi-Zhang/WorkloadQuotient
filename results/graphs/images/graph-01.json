@@ -1,0 +1,136 @@
+{
+  "complete": true,
+  "database": {
+    "C": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "E0": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ],
+    "T0": [
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "fixed_constants": [
+    "c:0",
+    "c:1"
+  ],
+  "head": [],
+  "legal_images": 7,
+  "minimizing_partitions": 7,
+  "minimum": 5,
+  "partition": [
+    0,
+    1
+  ],
+  "partitions": 10,
+  "scope": "Exhaustive legal homomorphic images; theorem supplies global completeness.",
+  "separating_images": 7,
+  "source_chase": {
+    "rows": [
+      {
+        "origin": [
+          "seed",
+          0
+        ],
+        "rel": "T0",
+        "terms": [
+          "v:c0",
+          "v:c1"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          1
+        ],
+        "rel": "E0",
+        "terms": [
+          "c:0",
+          "v:c0",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "seed",
+          2
+        ],
+        "rel": "E0",
+        "terms": [
+          "c:1",
+          "v:c1",
+          "c:0"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          0,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c0"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          0,
+          1
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c1"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          1,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c0"
+        ]
+      },
+      {
+        "origin": [
+          "fk",
+          2,
+          0
+        ],
+        "rel": "C",
+        "terms": [
+          "v:c1"
+        ]
+      }
+    ],
+    "unions": [],
+    "unsat": false
+  },
+  "source_names": [
+    "v:c0",
+    "v:c1"
+  ],
+  "status": "EXACT_MINIMUM"
+}

@@ -1,0 +1,209 @@
+{
+  "alphabet": [
+    "next",
+    "clone"
+  ],
+  "initial": 0,
+  "parameters": {
+    "depth": 1,
+    "retained_identifier_keys": [
+      1
+    ]
+  },
+  "queries": [
+    {
+      "atoms": [
+        [
+          "R0",
+          [
+            "v:k",
+            "c:0",
+            "c:1"
+          ]
+        ]
+      ],
+      "equalities": [],
+      "head": [
+        "v:k"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "R0",
+          [
+            "v:k",
+            "c:0",
+            "c:1"
+          ]
+        ],
+        [
+          "R1",
+          [
+            "v:child",
+            "v:k",
+            "c:0",
+            "c:1"
+          ]
+        ]
+      ],
+      "equalities": [],
+      "head": [
+        "v:k"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "R0",
+          [
+            "v:k",
+            "c:1",
+            "c:0"
+          ]
+        ]
+      ],
+      "equalities": [],
+      "head": [
+        "v:k"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "R0",
+          [
+            "v:k",
+            "c:1",
+            "c:0"
+          ]
+        ],
+        [
+          "R1",
+          [
+            "v:child",
+            "v:k",
+            "c:1",
+            "c:0"
+          ]
+        ]
+      ],
+      "equalities": [],
+      "head": [
+        "v:k"
+      ]
+    }
+  ],
+  "schema": {
+    "relations": {
+      "R0": {
+        "arity": 3,
+        "fks": [
+          {
+            "columns": [
+              1,
+              2,
+              3
+            ],
+            "source": [
+              0,
+              1,
+              2
+            ],
+            "target": "R1"
+          },
+          {
+            "columns": [
+              1,
+              2,
+              3
+            ],
+            "source": [
+              0,
+              2,
+              1
+            ],
+            "target": "R1"
+          }
+        ],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      },
+      "R1": {
+        "arity": 4,
+        "fks": [],
+        "keys": [
+          [
+            0
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ]
+      }
+    }
+  },
+  "states": [
+    {
+      "next": {
+        "clone": 1,
+        "next": 2
+      },
+      "query": 0
+    },
+    {
+      "next": {
+        "clone": 0,
+        "next": 3
+      },
+      "query": 1
+    },
+    {
+      "next": {
+        "clone": 3,
+        "next": 4
+      },
+      "query": 0
+    },
+    {
+      "next": {
+        "clone": 2,
+        "next": 5
+      },
+      "query": 1
+    },
+    {
+      "next": {
+        "clone": 5,
+        "next": 6
+      },
+      "query": 2
+    },
+    {
+      "next": {
+        "clone": 4,
+        "next": 7
+      },
+      "query": 3
+    },
+    {
+      "next": {
+        "clone": 7,
+        "next": 0
+      },
+      "query": 2
+    },
+    {
+      "next": {
+        "clone": 6,
+        "next": 1
+      },
+      "query": 3
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+# Workload Identifiability
+
+This standalone repository contains the implementation, proof notes, frozen inputs, certificates, raw finite results, and provenance ledgers for **Canonical Workload Quotients and the Cost of Distinguishing Databases**. It is complete for the locked internal research scope. The paper's general statements are mathematical theorems; the programs perform finite generation, replay, mutation testing, and independent certificate checks. Successful execution is not a machine-checked proof or independent peer review.
+
+## Result and scope
+
+The model compares ordered traces of set-valued equality conjunctive-query answers on the same legal database. Admitted queries are alpha-acyclic; the relation-level foreign-key graph is independently required to be acyclic; each foreign key targets a declared key. Constants are rigid canonical integers. The workload has a finite concrete action alphabet.
+
+The repository supports these paper claims:
+
+- finite universal source instances and exact containment in the locked dependency class;
+- a canonical coarsest reachable workload congruence and unique state-minimum quotient;
+- minimum directed countermodels as legal homomorphic images of the source instance;
+- an exact key-sensitive cascade with four quotient states but linear or exponential minimum witnesses;
+- an exact graph reduction with minimum `n - 1 + 2m + chromatic_number(G)` and NP-complete combined complexity; and
+- a replayable certificate whose reachability, containment maps, partition, transition congruence, and actual separating databases are checked separately.
+
+No general SQL, cyclic-dependency, null, update, recursion, aggregate, inequality, disjunction, learned-model, natural-language, latency, optimizer-cost, deployment, or 128-tuple small-model claim is made. The latest small-counterexample literature is treated as prior existence theory; the delta here is exact legal-image minimization and its tight families/complexity.
+
+## Full reproduction
+
+Use Linux/POSIX with Python 3.10 or newer. The reproduction uses only the Python standard library and requires no network access or package installation. Choose a new, nonexistent output directory:
+
+```sh
+python3 reproduce.py --output ../workload-reproduction
+```
+
+The command sequentially runs 42 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. Only CPU time, wall time, and peak RSS are excluded from exact result comparison. Frozen inputs, certificates, witnesses, partitions, legal valuations, public SQL records, engine outputs, and rejection outcomes are not excluded.
+
+A successful `reproduction.json` is written only after every command and comparison succeeds. Existing output directories are never overwritten. A cap, timeout, or failure to construct a witness returns failure or `UNKNOWN`; it never certifies equivalence.
+
+Component checks from the repository root:
+
+```sh
+python3 -m unittest discover -s tests -v
+PYTHONPATH=src PYTHONDONTWRITEBYTECODE=1 python3 -m workload_identifiability check \
+  inputs/cascade/families/case-06.json \
+  results/cascade/certificates/case-06.json
+PYTHONPATH=src PYTHONDONTWRITEBYTECODE=1 python3 -m workload_identifiability produce \
+  inputs/cascade/families/case-06.json \
+  --output ../quotient-certificate.json
+```
+
+Exit code 0 is a successful finite check/generation; 1 is rejection or an I/O/input error; 2 is `UNKNOWN` at a declared bound. See `FORMAT.md` for the trusted-model and certificate boundary.
+
+## Recorded evidence
+
+| Evidence unit | Outcome | Location |
+|---|---:|---|
+| Cascade parameter cases | 16 | `results/cascade/families.csv` |
+| Base graph controls | 8 | `results/graphs/graphs.csv` |
+| Exhaustive graph key-ablation instances | 24 | `results/graphs/graphs.csv` |
+| Public equality-SPJ pairs | 8 pairs / 16 unchanged SQL statements | `inputs/public/`, `results/public/` |
+| Accepted quotient certificates | 56 | `results/*/certificates/` |
+| Generated-family directed containment entries | 768 | campaign summaries |
+| Public directed containment entries | 32 | `results/public/campaign.json` |
+| Generated quotient block-pair separators | 288 | campaign summaries |
+| Legal tiny-domain databases | 2,583 | `results/cascade/tiny-valuations.jsonl` |
+| Tiny set-query evaluations | 15,498 | `results/cascade/tiny-oracle.json` |
+| Constant-respecting image partitions | 3,960 | `results/graphs/partitions/` |
+| Coloring assignments | 203 | `results/graphs/coloring-oracle/` |
+| Obligation-breaking quotient mutations | 16/16 rejected | `results/cascade/mutations.json` |
+| Additional illegal graph fold | rejected | `results/graphs/adjacent-color-mutation.json` |
+| Nonisomorphic optimum databases | 2, both size 9 | `results/graphs/nonunique-optimum.json` |
+| Regression tests | 42 passed | `tests/test_semantics.py` |
+| SQLite legal databases | 64 | `results/public/sqlite-replay.json` |
+| SQLite query executions | 1,024 | `results/public/sqlite-replay.json` |
+| DuckDB | not run: package unavailable | `results/engine-status.json` |
+
+The sixteen cascades are parameter cases of one construction, the eight graph controls are generated controls rather than public workloads, and the twenty-four ablations are not independent workload families. Finite counts validate implementations and exact instances; universal claims rely on proofs.
+
+For every cascade case, the syntax machine has eight reachable states, current output has two classes, and future behavior has four classes. With all identifier keys, depths one through six have minima 3, 7, 15, 31, 63, and 127. Without nonroot identifier keys, the minima are 3, 5, 7, 9, 11, and 13. At depth seven the all-key theorem gives 255; that over-cap database is not materialized.
+
+## Public SQL and engine control
+
+The original JOB `1a`–`1d`, `2a`–`2d` sample is retained in `inputs/public-screening.csv` as a negative control: all eight use `MIN` and are excluded unchanged. No full-JOB census or transformed-query result is inferred.
+
+Positive public evidence comes from SQLSolver's Calcite equivalence tests at commit `dcc2a91d8971a4c4d30b055f99d7d8428a1b754b`, redistributed under Apache-2.0 with its license and notice. `inputs/public/manifest.json` records the source paths, line numbers, exact unchanged SQL, schema, and admission rule. `inputs/public/SCREENING-METHOD.md` states the exact offline audit boundary, and an existing 42-test method now cross-checks all 181 screening rows, the eight admissions, the 16 retained SQL statements, the manifest, and all explicit CQ adapters. Each admitted two-state pair has a one-state quotient certificate.
+
+SQLite 3.46.1 evaluates all sixteen original statements on sixty-four deterministic databases satisfying the published primary-key/foreign-key schema. All 1,024 executions match under both bag and set comparison. This is a cross-check of result equality only. DuckDB could not be acquired and is explicitly `NOT_RUN_PACKAGE_UNAVAILABLE`; SQLite and the Python evaluator are not mislabeled as DuckDB.
+
+## Resource contract
+
+The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds and 300 wall seconds per child, zero accepted process swap, no more than 500,000 conservative obligations and 100,000 tiny legal valuations, 256 raw chase records, and 128 materialized tuples per generated witness. The final recorded run charged 103,007 obligations, 5.870 CPU seconds, 6.047 wall seconds, 97,188 KiB largest-child RSS, and 108,324 KiB parent RSS. These values establish closure, not speedup.
+
+## Organization
+
+- `src/workload_identifiability/` — producer, independent verifier, generators, image search, explicit public-case adapters, engine replay, and CLI.
+- `proofs/` — four standalone proof notes aligned with the manuscript.
+- `inputs/` — all generated cases, mutations, tiny model, public SQL, manifest, and negative screen.
+- `results/` — complete certificates, witnesses, partitions, oracle records, engine results, logs, and summaries.
+- `tests/` — 42 deterministic regression tests.
+- `claim_evidence_ledger.csv` — every material claim mapped to proof/check/result/table and maturity.
+- `external_resources.csv` — source, URL, license/access note, acquisition, and integration inventory.
+- `reference-verification.csv` — one verified core-metadata record for every cited bibliography key, with the supporting publisher, DOI, author/institutional, venue, or stable scholarly source.
+- `literature-reading.csv` — the 22-paper calibration plus two additional close readings.
+- `THIRD-PARTY-NOTICES.md` and `third_party/` — redistribution notices.
+
+The repository does not require the paper directory, a private path, an omitted cache, a network service, a model API, or an external controller.
+
+## Interpretation and external-use boundary
+
+The frozen artifact is a complete internal research package for the stated fragment, not evidence of acceptance. No independent human proof/code audit was performed. Before any external submission, accountable human authors must independently verify the work, recheck live venue rules, and disclose substantive AI participation in the research lifecycle as required by the then-current ACM policy.

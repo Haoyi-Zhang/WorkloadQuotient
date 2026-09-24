@@ -1,0 +1,135 @@
+{
+  "alphabet": [
+    "swap"
+  ],
+  "initial": 0,
+  "provenance": {
+    "adaptation": "Column references are translated positionally into the finite CQ representation; aliases are logical variable names. The SQL text itself is retained unchanged for engine replay.",
+    "admission_reason": "comma join versus explicit INNER JOIN",
+    "id": "public-01",
+    "source_lines": [
+      46,
+      47
+    ],
+    "source_sql": [
+      "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT WHERE EMP.DEPTNO = DEPT.DEPTNO",
+      "SELECT EMP0.ENAME FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO"
+    ]
+  },
+  "queries": [
+    {
+      "atoms": [
+        [
+          "EMP",
+          [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:e7",
+          "v:d0"
+        ]
+      ],
+      "head": [
+        "v:e1"
+      ]
+    },
+    {
+      "atoms": [
+        [
+          "EMP",
+          [
+            "v:e0",
+            "v:e1",
+            "v:e2",
+            "v:e3",
+            "v:e4",
+            "v:e5",
+            "v:e6",
+            "v:e7",
+            "v:e8"
+          ]
+        ],
+        [
+          "DEPT",
+          [
+            "v:d0",
+            "v:d1"
+          ]
+        ]
+      ],
+      "equalities": [
+        [
+          "v:e7",
+          "v:d0"
+        ]
+      ],
+      "head": [
+        "v:e1"
+      ]
+    }
+  ],
+  "schema": {
+    "relations": {
+      "DEPT": {
+        "arity": 2,
+        "fks": [],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      },
+      "EMP": {
+        "arity": 9,
+        "fks": [
+          {
+            "columns": [
+              0
+            ],
+            "source": [
+              7
+            ],
+            "target": "DEPT"
+          }
+        ],
+        "keys": [
+          [
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "states": [
+    {
+      "next": {
+        "swap": 1
+      },
+      "query": 0
+    },
+    {
+      "next": {
+        "swap": 0
+      },
+      "query": 1
+    }
+  ]
+}

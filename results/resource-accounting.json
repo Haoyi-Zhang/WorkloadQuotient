@@ -1,0 +1,45 @@
+{
+  "accounting_boundary": "Final reproduction plus retained pre-lock pilots. Development-time editor commands, manuscript compilation, web acquisition, and every unit-test rerun are not represented as a complete all-tools CPU total.",
+  "claims": "The final scientific reproduction satisfies every frozen execution limit. Resource measurements support closure only, not algorithmic or database-engine performance.",
+  "final_reproduction": {
+    "certificates_rechecked": 56,
+    "conservative_obligations": 103007,
+    "cpu_seconds": 5.870440726,
+    "largest_child_peak_rss_kib": 97188,
+    "parent_peak_rss_kib": 108324,
+    "process_swap_kib": 0,
+    "scientific_files_compared": 246,
+    "status": "WITHIN_LIMITS",
+    "tiny_legal_valuations": 2583,
+    "wall_seconds": 6.047164333999945,
+    "workers": 1
+  },
+  "interpretation": "The 128-tuple cap is an execution bound. Formula-only depth-seven and larger all-key cases do not claim materialized database execution.",
+  "retained_pilots": [
+    {
+      "activity": "depth-six all-key cascade pilot",
+      "cpu_seconds": 0.056397591,
+      "peak_rss_kib": 94888,
+      "process_swap_kib": 0,
+      "workers": 1
+    },
+    {
+      "activity": "legal-image pilot",
+      "cpu_seconds": 0.014595,
+      "peak_rss_kib": 93224,
+      "workers": 1
+    }
+  ],
+  "run_limits": {
+    "address_space_gib": 2.5,
+    "archive_bytes_ceiling": 134217728,
+    "concrete_tuple_cap": 128,
+    "cpu_seconds_per_child": 240,
+    "project_cpu_ceiling_seconds": 21600,
+    "project_equivalence_partition_obligation_ceiling": 500000,
+    "project_tiny_legal_valuation_ceiling": 100000,
+    "raw_chase_record_cap": 256,
+    "wall_seconds_per_command": 300,
+    "workers": 1
+  }
+}
