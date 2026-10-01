@@ -10,9 +10,11 @@ import csv
 import json
 from .core import produce
 from .verify import verify
+from .public_adapters import validate_contract
 
 
 def campaign(root: Path, output: Path) -> dict:
+    contract = validate_contract(root)
     cases = root / "inputs" / "public" / "cases"
     output.mkdir(parents=True, exist_ok=False)
     (output / "certificates").mkdir()
@@ -49,11 +51,12 @@ def campaign(root: Path, output: Path) -> dict:
         "source": "SQLSolver Calcite equivalence tests at pinned commit",
         "cases": len(rows),
         "unchanged_sql_queries": 2 * len(rows),
+        "hand_written_cq_adapters": len(contract["adapters"]),
         "all_pairs_equivalent": True,
         "all_quotients_singleton": True,
         "directed_containment_entries": total_containment,
         "block_pair_separators": total_separators,
-        "scope": "Eight sequentially selected native equality-SPJ pairs under the published Calcite EMP/DEPT key and foreign-key schema; not a census of SQLSolver or general SQL.",
+        "scope": "Eight sequentially selected native equality-SPJ pairs under the published Calcite EMP/DEPT key and foreign-key schema.  The CQ adapters are hand-written and contract-checked; this stage does not parse SQL or establish SQL-to-CQ translation correctness.",
     }
     (output / "campaign.json").write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return summary

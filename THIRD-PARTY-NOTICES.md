@@ -6,9 +6,9 @@ implementation. Its generated models and databases are retained in full. Source
 URLs and the licenses that were actually established are listed in
 `external_resources.csv`.
 
-The public JOB screening record retains only the minimal `SELECT MIN(...)`
-excerpts needed to explain exclusion, filenames, and immutable upstream Git blob
-identifiers. Redistribution rights for the complete SQL corpus were not
+The independent JOB negative screen under `inputs/job-negative/` retains only
+the minimal `SELECT MIN(...)` excerpts needed to explain exclusion, the pinned
+commit, filenames, immutable file URLs, and upstream Git blob identifiers. Redistribution rights for the complete SQL corpus were not
 established; complete queries and IMDb data are not redistributed or used in the
 experiments. Screening of these eight originals is not an offline-reproduced SQL
 benchmark, a census of all JOB queries, or a test of transformed SPJ queries.

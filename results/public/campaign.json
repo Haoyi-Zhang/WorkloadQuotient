@@ -4,7 +4,8 @@
   "block_pair_separators": 0,
   "cases": 8,
   "directed_containment_entries": 32,
-  "scope": "Eight sequentially selected native equality-SPJ pairs under the published Calcite EMP/DEPT key and foreign-key schema; not a census of SQLSolver or general SQL.",
+  "hand_written_cq_adapters": 8,
+  "scope": "Eight sequentially selected native equality-SPJ pairs under the published Calcite EMP/DEPT key and foreign-key schema.  The CQ adapters are hand-written and contract-checked; this stage does not parse SQL or establish SQL-to-CQ translation correctness.",
   "source": "SQLSolver Calcite equivalence tests at pinned commit",
   "status": "PUBLIC_FRAGMENT_CERTIFICATES_PASSED",
   "unchanged_sql_queries": 16

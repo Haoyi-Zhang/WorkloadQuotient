@@ -27,9 +27,19 @@ Suppose a selected set of forced tuples at level i-1 has size at least N_(i-1). 
 
 **Matching construction.** Use one root tuple (2,0,1). For every next level, form exactly the required keys (z,0,1) and (z,1,0) for the distinct identifiers z at the preceding level. If the new level's id key is declared, assign a distinct identifier to every required tuple; otherwise give every tuple the same identifier 2. The target key (parent,a,b) holds because only one tuple is created per required key. The extra identifier key holds exactly at the levels where distinct identifiers were assigned. Every FK holds by construction. The number of distinct parent identifiers is the number of parent tuples when that level has the identifier key, and one otherwise, giving exactly the recurrence. The root query p_plus returns 2 and p_minus does not. Exchanging 0 and 1 gives the opposite directed witness. QED.
 
+**Explicit source-image map.** The equivalent homomorphism from the source chase must be defined after the parent image is fixed. At level i, group source facts by the mapped target key `(h(parent),a,b)`. All source identifier terms in one group map to the same image identifier. Different groups may reuse one identifier when level i has no id key; when level i has the id key, different mapped target keys receive different image identifiers. It is generally wrong to retain every source child identifier after an unkeyed parent level has been folded, because several source children can then have the same mapped `(parent,a,b)` key.
+
+For d=2 and H={2}, map the root name to 2 and both R1 source identifiers to 2. At R2, the four source children form two groups after the parent map: the children with mapped key `(2,0,1)` map their ids to 10, and the children with mapped key `(2,1,0)` map their ids to 11. The image is
+
+    R0(2,0,1)
+    R1(2,2,0,1), R1(2,2,1,0)
+    R2(10,2,0,1), R2(11,2,1,0).
+
+It has 1+2+2 facts and satisfies both R2 keys. If the four source R2 identifiers were all kept distinct, each mapped target key would occur twice with different ids, violating the key `(parent,a,b)`. This concrete case is a regression fixture in the unit suite.
+
 ## Corollaries and boundaries
 
-When H is empty, Ni=2 for every positive level and L(d,empty)=1+2d. When every positive level has its identifier key, Ni=2^i and L(d,H)=2^(d+1)-1. A key on the terminal relation's id cannot affect the tuple count because no FK leaves that relation, although it changes which identifier assignments are legal.
+When H is empty, Ni=2 for every positive level and L(d,empty)=1+2d. When every positive level has its identifier key, Ni=2^i and L(d,H)=2^(d+1)-1. In the all-key case no legal identification can reduce the number of facts forced at a level; this is weaker than saying that every equality between source values is illegal. Harmless value coincidences may remain when they neither merge facts nor violate a key. A key on the terminal relation's id cannot affect the tuple count because no FK leaves that relation, although it changes which identifier assignments are legal.
 
 With d=7 there are eight relation symbols, arity at most four, and two one-atom output queries, yet every distinguishing database has at least 255 tuples. Thus a 128-tuple execution cap cannot establish universal equivalence by failed search even inside these otherwise small dimensions. This is an exact mathematical lower bound, not an inference from unsuccessful enumeration. The artifact computes this formula and refuses to materialize an over-cap instance; it never produces a 255-tuple experimental database.
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Recreate every bounded finite result in this standalone repository.
 
-The complete command uses only Python's standard library and the files shipped
-in the repository.  It rebuilds generated families, graph instances, public
-fragment certificates, and the SQLite result-equality control.  DuckDB replay is
-implemented separately and is reported only when that package is actually
-installed; it is never inferred from the SQLite run.
+The command produces five independent stage logs from one Linux run: regression
+checks, cascades, graphs, public CQ certificates, and SQLite SQL/CQ replay.
+Successful execution is finite evidence only, not a mechanized general proof or
+an independent novelty review.
 """
 from __future__ import annotations
+
 import argparse
 import csv
 import json
@@ -20,38 +20,16 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parent
-VOLATILE = {"cpu_seconds", "wall_seconds", "peak_rss_kib"}
+sys.path.insert(0, str(ROOT / "src"))
+from workload_identifiability.evidence_compare import (  # noqa: E402
+    ENVIRONMENT_FIELDS,
+    VOLATILE_FIELDS,
+    compare_tree,
+    read_value,
+    scientific_view,
+)
 
-
-def normalized(value):
-    """Remove only explicitly named resource measurements, recursively."""
-    if isinstance(value, dict):
-        return {k: normalized(v) for k, v in value.items() if k not in VOLATILE}
-    if isinstance(value, list):
-        return [normalized(v) for v in value]
-    return value
-
-
-def read_scientific(path: Path):
-    if path.suffix == ".json":
-        return normalized(json.loads(path.read_text(encoding="utf-8")))
-    if path.suffix == ".jsonl":
-        return [normalized(json.loads(line)) for line in path.read_text(encoding="utf-8").splitlines()]
-    if path.suffix == ".csv":
-        with path.open(newline="", encoding="utf-8") as handle:
-            return [normalized(row) for row in csv.DictReader(handle)]
-    return path.read_bytes()
-
-
-def compare_tree(expected: Path, actual: Path) -> int:
-    left = {p.relative_to(expected) for p in expected.rglob("*") if p.is_file()}
-    right = {p.relative_to(actual) for p in actual.rglob("*") if p.is_file()}
-    if left != right:
-        raise AssertionError(f"Different evidence files: missing={sorted(left-right)}, extra={sorted(right-left)}")
-    for rel in sorted(left):
-        if read_scientific(expected / rel) != read_scientific(actual / rel):
-            raise AssertionError(f"Scientific evidence differs: {expected.name}/{rel}")
-    return len(left)
+EXPECTED_REGRESSION_TESTS = 46
 
 
 def current_swap_kib() -> int:
@@ -84,53 +62,68 @@ def main() -> int:
     records = []
     env = dict(os.environ, PYTHONPATH=str(ROOT / "src"), PYTHONDONTWRITEBYTECODE="1", PYTHONHASHSEED="0")
 
-    def run(label: str, arguments: list[str]):
+    def run(label: str, arguments: list[str]) -> None:
         started = time.monotonic()
         usage = resource.getrusage(resource.RUSAGE_CHILDREN)
         log = out / "logs" / (label + ".txt")
         with log.open("x", encoding="utf-8") as handle:
-            result = subprocess.run([sys.executable, *arguments], cwd=ROOT, env=env,
-                                    stdout=handle, stderr=subprocess.STDOUT,
-                                    timeout=300, check=False)
+            result = subprocess.run(
+                [sys.executable, *arguments],
+                cwd=ROOT,
+                env=env,
+                stdout=handle,
+                stderr=subprocess.STDOUT,
+                timeout=300,
+                check=False,
+            )
         now = resource.getrusage(resource.RUSAGE_CHILDREN)
-        records.append({"command": label, "returncode": result.returncode,
-                        "cpu_seconds": now.ru_utime + now.ru_stime - usage.ru_utime - usage.ru_stime,
-                        "wall_seconds": time.monotonic() - started,
-                        "log": str(log.relative_to(out))})
+        records.append({
+            "command": label,
+            "returncode": result.returncode,
+            "cpu_seconds": now.ru_utime + now.ru_stime - usage.ru_utime - usage.ru_stime,
+            "wall_seconds": time.monotonic() - started,
+            "log": str(log.relative_to(out)),
+        })
         if result.returncode != 0:
             raise RuntimeError(f"{label} did not complete successfully; inspect {log}")
 
     try:
         run("regression-tests", ["-m", "unittest", "discover", "-s", "tests", "-v"])
         test_log = (out / "logs/regression-tests.txt").read_text(encoding="utf-8")
-        if "Ran 42 tests" not in test_log or not test_log.rstrip().endswith("OK"):
+        if f"Ran {EXPECTED_REGRESSION_TESTS} tests" not in test_log or not test_log.rstrip().endswith("OK"):
             raise AssertionError("Unexpected regression test count or completion")
         run("cascade", ["-m", "workload_identifiability", "reproduce", "--output", str(out / "cascade")])
         run("graphs", ["-m", "workload_identifiability", "graphs", "--output", str(out / "graphs")])
         run("public-certificates", ["-m", "workload_identifiability", "public", "--output", str(out / "public")])
-        run("sqlite-replay", ["-m", "workload_identifiability.engine_replay", "--root", str(ROOT),
-                              "--output", str(out / "public/sqlite-replay.json"), "--engine", "sqlite"])
+        run("sqlite-replay", [
+            "-m", "workload_identifiability.engine_replay", "--root", str(ROOT),
+            "--output", str(out / "public/sqlite-replay.json"), "--engine", "sqlite",
+        ])
 
         files_compared = 0
+        environment_drift: list[dict] = []
         for kind in ("cascade", "graphs"):
             for part in ("inputs", "results"):
-                files_compared += compare_tree(ROOT / part / kind, out / kind / part)
-        files_compared += compare_tree(ROOT / "results/public", out / "public")
+                count, drift = compare_tree(ROOT / part / kind, out / kind / part)
+                files_compared += count
+                environment_drift.extend({"tree": f"{part}/{kind}", **item} for item in drift)
+        count, drift = compare_tree(ROOT / "results/public", out / "public")
+        files_compared += count
+        environment_drift.extend({"tree": "results/public", **item} for item in drift)
 
         # Replay the independently implemented verifier over all frozen records.
-        sys.path.insert(0, str(ROOT / "src"))
         from workload_identifiability.verify import verify
-        count = 0
+        certificate_count = 0
         for path in sorted((ROOT / "inputs/cascade/families").glob("*.json")):
             verify(json.loads(path.read_text()), json.loads((ROOT / "results/cascade/certificates" / path.name).read_text()))
-            count += 1
+            certificate_count += 1
         for path in sorted((ROOT / "inputs/graphs").glob("*.json")):
             verify(json.loads(path.read_text()), json.loads((ROOT / "results/graphs/certificates" / path.name).read_text()))
-            count += 1
+            certificate_count += 1
         for path in sorted((ROOT / "inputs/public/cases").glob("*.json")):
             verify(json.loads(path.read_text()), json.loads((ROOT / "results/public/certificates" / path.name).read_text()))
-            count += 1
-        if count != 56:
+            certificate_count += 1
+        if certificate_count != 56:
             raise AssertionError("The frozen 56 generated/public certificates were not all replayed")
 
         with (out / "cascade/results/families.csv").open(newline="", encoding="utf-8") as handle:
@@ -139,12 +132,17 @@ def main() -> int:
         for depth in range(1, 7):
             all_keys = next(r for r in rows if int(r["depth"]) == depth and r["category"] == "all-identifier-keys")
             no_keys = next(r for r in rows if int(r["depth"]) == depth and r["category"] == "no-nonroot-identifier-keys")
-            coordinates.append({"depth": str(depth), "canonical": all_keys["largest_canonical_witness"],
-                                "minimum_no_identifier": no_keys["minimum_witness"]})
+            coordinates.append({
+                "depth": str(depth),
+                "canonical": all_keys["largest_canonical_witness"],
+                "minimum_no_identifier": no_keys["minimum_witness"],
+            })
         plot_file = out / "cascade-size.csv"
         with plot_file.open("x", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=coordinates[0]); writer.writeheader(); writer.writerows(coordinates)
-        if read_scientific(plot_file) != read_scientific(ROOT / "results/figure-data/cascade-size.csv"):
+            writer = csv.DictWriter(handle, fieldnames=coordinates[0])
+            writer.writeheader()
+            writer.writerows(coordinates)
+        if scientific_view(read_value(plot_file)) != scientific_view(read_value(ROOT / "results/figure-data/cascade-size.csv")):
             raise AssertionError("The recorded plot data do not match the reproduced cascade table")
 
         cascade = json.loads((out / "cascade/results/campaign.json").read_text())
@@ -152,13 +150,14 @@ def main() -> int:
         public = json.loads((out / "public/campaign.json").read_text())
         sqlite = json.loads((out / "public/sqlite-replay.json").read_text())
         semantic_totals = {
-            "regression_test_methods": 42,
+            "regression_test_methods": EXPECTED_REGRESSION_TESTS,
             "cascade_cases": cascade["families"],
             "base_graph_controls": graphs["graph_families"],
             "key_ablation_instances": graphs["key_ablation_instances"],
             "public_sql_pairs": public["cases"],
             "unchanged_public_sql_queries": public["unchanged_sql_queries"],
-            "frozen_certificates_rechecked": count,
+            "hand_written_cq_adapters": public["hand_written_cq_adapters"],
+            "frozen_certificates_rechecked": certificate_count,
             "family_directed_containment_entries": cascade["directed_family_containment_checks"] + graphs["directed_containment_checks"],
             "public_directed_containment_entries": public["directed_containment_entries"],
             "family_block_pair_separators": cascade["family_separator_checks"] + graphs["separator_checks"],
@@ -169,35 +168,62 @@ def main() -> int:
             "coloring_assignments": graphs["coloring_assignments"],
             "sqlite_legal_databases": sqlite["legal_databases"],
             "sqlite_query_executions": sqlite["query_executions"],
+            "sqlite_sql_to_cq_set_comparisons": sqlite["sql_to_cq_set_comparisons"],
+            "sqlite_cq_adapter_evaluations": sqlite["cq_adapter_evaluations"],
+            "adapter_negative_control_evaluations": sqlite["adapter_negative_control_evaluations"],
+            "adapter_negative_control_mismatches": sqlite["adapter_negative_control_mismatches"],
+            "sql_null_input_cells_finitely_encoded": sqlite["null_input_cells_encoded"],
             "producer_charged_search_obligations": cascade["producer_charged_search_obligations"] + graphs["producer_charged_search_obligations"],
             "mutated_certificates_rejected": cascade["mutations_rejected"],
             "illegal_graph_folds_rejected": graphs["adjacent_color_mutations_rejected"],
             "nonisomorphic_minimum_databases": graphs["nonisomorphic_optima"],
             "figure_rows_rebuilt": len(coordinates),
         }
-        obligations = (semantic_totals["producer_charged_search_obligations"]
-                       + 36 * semantic_totals["tiny_legal_valuations"]
-                       + semantic_totals["image_partitions"] + semantic_totals["coloring_assignments"]
-                       + semantic_totals["family_directed_containment_entries"]
-                       + semantic_totals["family_block_pair_separators"]
-                       + semantic_totals["public_directed_containment_entries"]
-                       + semantic_totals["public_block_pair_separators"]
-                       + semantic_totals["sqlite_query_executions"])
+        obligation_components = {
+            "producer_charged_search_obligations": semantic_totals["producer_charged_search_obligations"],
+            "tiny_ordered_query_pair_checks_36_per_legal_database": 36 * semantic_totals["tiny_legal_valuations"],
+            "image_partitions": semantic_totals["image_partitions"],
+            "coloring_assignments": semantic_totals["coloring_assignments"],
+            "family_directed_containment_entries": semantic_totals["family_directed_containment_entries"],
+            "family_block_pair_separators": semantic_totals["family_block_pair_separators"],
+            "public_directed_containment_entries": semantic_totals["public_directed_containment_entries"],
+            "public_block_pair_separators": semantic_totals["public_block_pair_separators"],
+            "sqlite_query_executions": semantic_totals["sqlite_query_executions"],
+        }
+        obligations = sum(obligation_components.values())
         if obligations > 500000 or cascade["tiny_legal_valuations"] > 100000:
             raise RuntimeError("aggregate reproduction enumeration ceiling exceeded")
         child = resource.getrusage(resource.RUSAGE_CHILDREN)
         usage = resource.getrusage(resource.RUSAGE_SELF)
-        cpu = (time.process_time() - self_cpu + child.ru_utime + child.ru_stime
-               - before_child.ru_utime - before_child.ru_stime)
+        cpu = (
+            time.process_time() - self_cpu + child.ru_utime + child.ru_stime
+            - before_child.ru_utime - before_child.ru_stime
+        )
         if cpu > 6 * 3600 or current_swap_kib() != 0:
             raise RuntimeError("resource contract exceeded")
         summary = {
             "status": "FINITE_REPRODUCTION_PASSED",
             "scientific_files_compared": files_compared,
             "all_scientific_results_equal": True,
-            "comparison_excludes_only": sorted(VOLATILE),
+            "comparison_policy": {
+                "volatile_measurement_fields_ignored": sorted(VOLATILE_FIELDS),
+                "environment_metadata_fields_reported_not_scientifically_compared": sorted(ENVIRONMENT_FIELDS),
+                "all_other_fields": "exact comparison",
+            },
+            "environment_metadata_drift": environment_drift,
             "counts": semantic_totals,
+            "conservative_main_reproduction_obligation_components": obligation_components,
             "conservative_main_reproduction_obligations": obligations,
+            "not_included_in_main_obligation_counter": [
+                "regression tests",
+                "scientific file comparisons",
+                "certificate rechecks",
+                "certificate mutation rejections",
+                "illegal graph-fold rejection",
+                "SQL-to-CQ adapter comparisons",
+                "adapter negative-control evaluations",
+                "figure rows rebuilt",
+            ],
             "commands": records,
             "cpu_seconds": cpu,
             "wall_seconds": time.monotonic() - wall,
@@ -207,15 +233,19 @@ def main() -> int:
             "workers": 1,
             "sqlite_replay": "PASSED",
             "duckdb_replay": "NOT_RUN_PACKAGE_UNAVAILABLE",
-            "scope": ("Finite code, exact generated evidence, public-fragment certificates, and an independent "
-                      "SQLite result-equality control; not an external review or a mechanized general proof."),
+            "scope": (
+                "Finite code, exact generated evidence, public-fragment certificates, SQLite pair-internal replay, "
+                "and finite per-side SQL-set/CQ-set comparisons.  This is not an external review, a SQL parser "
+                "validation, a NULL-semantics result, or a mechanized general proof."
+            ),
         }
         with (out / "reproduction.json").open("x", encoding="utf-8") as handle:
-            json.dump(summary, handle, indent=2, sort_keys=True); handle.write("\n")
+            json.dump(summary, handle, indent=2, sort_keys=True)
+            handle.write("\n")
         signal.alarm(0)
         print(json.dumps(summary, indent=2, sort_keys=True))
         return 0
-    except (AssertionError, OSError, ValueError, RuntimeError, subprocess.TimeoutExpired, MemoryError) as error:
+    except (AssertionError, OSError, ValueError, RuntimeError, subprocess.TimeoutExpired, MemoryError, TimeoutError) as error:
         print(json.dumps({"status": "NOT_COMPLETED", "reason": str(error)}, indent=2), file=sys.stderr)
         return 1
 

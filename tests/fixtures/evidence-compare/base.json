@@ -1,0 +1,9 @@
+{
+  "all_set_results_equal_within_sql_pairs": true,
+  "all_sql_to_cq_set_results_equal": true,
+  "engine": "sqlite",
+  "engine_version": "3.46.1",
+  "query_executions": 1024,
+  "sql_to_cq_set_comparisons": 1024,
+  "status": "ENGINE_REPLAY_PASSED"
+}

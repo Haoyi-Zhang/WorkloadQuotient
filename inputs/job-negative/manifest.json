@@ -1,0 +1,87 @@
+{
+  "screening_kind": "independent negative admission screen",
+  "source_repository": "https://github.com/gregrahn/join-order-benchmark",
+  "source_commit": "a39603662e023e449cb2121997a5034df9e02ebf",
+  "repository_declared_license": null,
+  "redistribution_policy": "Only minimal aggregate-bearing excerpts and immutable identifiers are retained; full upstream query files are not redistributed by this artifact.",
+  "fragment_boundary": "positive equality conjunctive queries under set semantics; aggregation is excluded",
+  "queries": [
+    {
+      "id": "1a",
+      "path": "1a.sql",
+      "blob_sha": "cb464bb5ab19b837a644555479037829b3a12e78",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/1a.sql",
+      "minimal_excerpt": "SELECT MIN(mc.note) AS production_note,",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    },
+    {
+      "id": "1b",
+      "path": "1b.sql",
+      "blob_sha": "c471f862b712b2c5752acae1c9745a205608a83f",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/1b.sql",
+      "minimal_excerpt": "SELECT MIN(mc.note) AS production_note,",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    },
+    {
+      "id": "1c",
+      "path": "1c.sql",
+      "blob_sha": "41600c376b603fd34e124a0f7d031aae031dbe90",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/1c.sql",
+      "minimal_excerpt": "SELECT MIN(mc.note) AS production_note,",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    },
+    {
+      "id": "1d",
+      "path": "1d.sql",
+      "blob_sha": "96a6eda9a6b7156ec3c1f39242bc63072f75e90e",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/1d.sql",
+      "minimal_excerpt": "SELECT MIN(mc.note) AS production_note,",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    },
+    {
+      "id": "2a",
+      "path": "2a.sql",
+      "blob_sha": "6e6b46eddf92f4d390a1147fcd92a82fa006e129",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/2a.sql",
+      "minimal_excerpt": "SELECT MIN(t.title) AS movie_title",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    },
+    {
+      "id": "2b",
+      "path": "2b.sql",
+      "blob_sha": "1c594b463f43752918f1c98c7c5fee84924271d1",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/2b.sql",
+      "minimal_excerpt": "SELECT MIN(t.title) AS movie_title",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    },
+    {
+      "id": "2c",
+      "path": "2c.sql",
+      "blob_sha": "905453e8701455d22c8a3776940d184b9249c8ce",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/2c.sql",
+      "minimal_excerpt": "SELECT MIN(t.title) AS movie_title",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    },
+    {
+      "id": "2d",
+      "path": "2d.sql",
+      "blob_sha": "b7f7cedf81c9106bd1e8dc9f8b90a73d057d25d4",
+      "immutable_url": "https://github.com/gregrahn/join-order-benchmark/blob/a39603662e023e449cb2121997a5034df9e02ebf/2d.sql",
+      "minimal_excerpt": "SELECT MIN(t.title) AS movie_title",
+      "decision": "EXCLUDE",
+      "reason": "contains the MIN aggregate, outside the locked positive equality-CQ fragment"
+    }
+  ],
+  "summary": {
+    "screened": 8,
+    "admitted": 0,
+    "excluded_for_min_aggregate": 8
+  }
+}

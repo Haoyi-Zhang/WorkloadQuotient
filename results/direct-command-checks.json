@@ -10,10 +10,10 @@
   },
   "existing_certificate": "results/cascade/certificates/case-06.json",
   "input": "inputs/cascade/families/case-06.json",
-  "location": "final working artifact; documented verifier, producer, and plain unittest commands executed directly",
+  "location": "current artifact; documented commands executed directly after the final five-stage run",
   "plain_unittest": {
     "status": "PASSED",
-    "tests": 42
+    "tests": 46
   },
   "produce": {
     "result": {
@@ -25,5 +25,5 @@
     "status": "ACCEPTED"
   },
   "regenerated_certificate_equals_recorded_certificate": true,
-  "scope": "direct documented command validation, not a second theorem proof or independent review"
+  "scope": "direct documented command validation; not a second theorem proof or independent review"
 }

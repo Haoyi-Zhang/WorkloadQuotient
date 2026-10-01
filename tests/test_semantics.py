@@ -15,6 +15,8 @@ from workload_identifiability.images import minimum_image, partition_count, assi
 from workload_identifiability.families import cascade, minimum_witness, minimum_counts
 from workload_identifiability.graphs import graph_model, coloring_witness, chromatic_oracle
 from workload_identifiability.experiments import tiny_model, mutation_cases
+from workload_identifiability.public_adapters import validate_contract
+from workload_identifiability.evidence_compare import compare_files
 
 
 def single(queries, relations=None):
@@ -212,6 +214,29 @@ class MinimumTests(unittest.TestCase):
         m=cascade(6,[1,3,5]);r=minimum_witness(6,[1,3,5])
         self.assertEqual(r['minimum'],19);legal_database(m['schema'],r['database'])
 
+    def test_mixed_key_mapping_groups_by_mapped_target_key(self):
+        m=cascade(2,[2]); witness=minimum_witness(2,[2])
+        self.assertEqual(witness['level_counts'],[1,2,2])
+        self.assertEqual(witness['minimum'],5)
+        legal_database(m['schema'],witness['database'])
+        _,facts,_=chase(m['queries'][0],m['schema'])
+        mapping={
+            'v:k':2,
+            'n:1:0':2,'n:2:0':2,
+            'n:3:0':10,'n:6:0':10,
+            'n:4:0':11,'n:5:0':11,
+        }
+        value=lambda term:int(term[2:]) if term.startswith('c:') else mapping[term]
+        image={rel:{tuple(value(t) for t in row) for row in rows} for rel,rows in facts.items()}
+        expected={rel:{tuple(row) for row in rows} for rel,rows in witness['database'].items()}
+        self.assertEqual(image,expected)
+        bad_mapping=dict(mapping,**{'n:3:0':10,'n:4:0':11,'n:5:0':12,'n:6:0':13})
+        bad_value=lambda term:int(term[2:]) if term.startswith('c:') else bad_mapping[term]
+        bad={rel:[list(row) for row in {tuple(bad_value(t) for t in source) for source in rows}]
+             for rel,rows in facts.items()}
+        with self.assertRaisesRegex(InvalidCertificate,'key'):
+            legal_database(m['schema'],bad)
+
     def test_two_nonisomorphic_optima(self):
         m=graph_model(4,[(0,1),(2,3)])
         a=coloring_witness(m,[0,1,0,1]);b=coloring_witness(m,[0,1,1,0])
@@ -264,14 +289,55 @@ class PublicEvidenceTests(unittest.TestCase):
         self.assertEqual(comments,expected_comments)
         self.assertEqual(statements,expected_sql)
 
+    def test_public_adapter_contract_is_exact(self):
+        root=Path(__file__).resolve().parents[1]
+        contract=validate_contract(root)
+        self.assertEqual(len(contract['adapters']),8)
+        self.assertEqual([c['name'] for c in contract['relations']['EMP']],
+                         ['EMPNO','ENAME','JOB','MGR','HIREDATE','SAL','COMM','DEPTNO','SLACKER'])
+        self.assertFalse(contract['theory_semantics'].endswith('with NULL'))
+
     def test_sqlite_public_replay(self):
         from tempfile import TemporaryDirectory
         from workload_identifiability.engine_replay import replay
         root=Path(__file__).resolve().parents[1]
         with TemporaryDirectory() as d:
             result=replay(root,Path(d)/'sqlite.json','sqlite')
-        self.assertTrue(result['all_set_results_equal'])
-        self.assertTrue(result['all_bag_results_equal'])
+        self.assertTrue(result['all_set_results_equal_within_sql_pairs'])
+        self.assertTrue(result['all_bag_results_equal_within_sql_pairs'])
+        self.assertTrue(result['all_sql_to_cq_set_results_equal'])
+        self.assertTrue(result['adapter_error_negative_control_rejected'])
+        self.assertFalse(result['theory_null_semantics_claim'])
         self.assertEqual(result['query_executions'],1024)
+        self.assertEqual(result['sql_to_cq_set_comparisons'],1024)
+        self.assertEqual(result['cq_adapter_evaluations'],1024)
+        self.assertEqual(result['adapter_negative_control_evaluations'],64)
+        self.assertGreater(result['adapter_negative_control_mismatches'],0)
+        self.assertGreater(result['null_input_cells_encoded'],0)
+
+    def test_engine_version_is_metadata_but_semantic_change_fails(self):
+        root=Path(__file__).resolve().parents[1]
+        fixture=root/'tests/fixtures/evidence-compare'
+        drift=compare_files(fixture/'base.json',fixture/'version-only.json')
+        self.assertEqual(drift,[{'field_path':'$.engine_version','expected':'3.46.1','actual':'3.47.0'}])
+        with self.assertRaisesRegex(AssertionError,'Scientific evidence differs'):
+            compare_files(fixture/'base.json',fixture/'result-change.json')
+
+    def test_job_negative_screen_is_independent_and_traceable(self):
+        import csv
+        root=Path(__file__).resolve().parents[1]
+        path=root/'inputs/job-negative'
+        manifest=json.loads((path/'manifest.json').read_text())
+        self.assertEqual(manifest['source_commit'],'a39603662e023e449cb2121997a5034df9e02ebf')
+        self.assertEqual(manifest['summary'],{'screened':8,'admitted':0,'excluded_for_min_aggregate':8})
+        self.assertEqual([q['id'] for q in manifest['queries']],['1a','1b','1c','1d','2a','2b','2c','2d'])
+        self.assertTrue(all(q['decision']=='EXCLUDE' and 'MIN' in q['minimal_excerpt'] for q in manifest['queries']))
+        self.assertTrue(all(len(q['blob_sha'])==40 for q in manifest['queries']))
+        self.assertTrue(all(manifest['source_commit'] in q['immutable_url'] for q in manifest['queries']))
+        with (path/'screening.csv').open(newline='') as handle:
+            rows=list(csv.DictReader(handle))
+        self.assertEqual(len(rows),8)
+        self.assertTrue(all(row['decision']=='EXCLUDE' for row in rows))
+        self.assertNotEqual(path/'screening.csv',root/'inputs/public-screening.csv')
 
 if __name__=='__main__':unittest.main()

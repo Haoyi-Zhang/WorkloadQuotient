@@ -24,12 +24,19 @@ test_constant_anchored_fold_is_needed (test_semantics.MinimumTests.test_constant
 test_image_cap_never_returns_best_so_far (test_semantics.MinimumTests.test_image_cap_never_returns_best_so_far) ... ok
 test_image_exhaustion_and_equivalence (test_semantics.MinimumTests.test_image_exhaustion_and_equivalence) ... ok
 test_key_fold_rejected (test_semantics.MinimumTests.test_key_fold_rejected) ... ok
+test_mixed_key_mapping_groups_by_mapped_target_key (test_semantics.MinimumTests.test_mixed_key_mapping_groups_by_mapped_target_key) ... ok
 test_mixed_keys_minimum_is_legal (test_semantics.MinimumTests.test_mixed_keys_minimum_is_legal) ... ok
 test_negative_condition_not_only_legality (test_semantics.MinimumTests.test_negative_condition_not_only_legality) ... ok
 test_partition_count_matches_enumeration (test_semantics.MinimumTests.test_partition_count_matches_enumeration) ... ok
 test_terminal_identifier_key_changes_no_size (test_semantics.MinimumTests.test_terminal_identifier_key_changes_no_size) ... ok
 test_two_nonisomorphic_optima (test_semantics.MinimumTests.test_two_nonisomorphic_optima) ... ok
 test_unsatisfiable_source_has_no_image (test_semantics.MinimumTests.test_unsatisfiable_source_has_no_image) ... ok
+test_all_public_pairs_collapse (test_semantics.PublicEvidenceTests.test_all_public_pairs_collapse) ... ok
+test_engine_version_is_metadata_but_semantic_change_fails (test_semantics.PublicEvidenceTests.test_engine_version_is_metadata_but_semantic_change_fails) ... ok
+test_job_negative_screen_is_independent_and_traceable (test_semantics.PublicEvidenceTests.test_job_negative_screen_is_independent_and_traceable) ... ok
+test_public_adapter_contract_is_exact (test_semantics.PublicEvidenceTests.test_public_adapter_contract_is_exact) ... ok
+test_public_manifest_has_eight_unchanged_pairs (test_semantics.PublicEvidenceTests.test_public_manifest_has_eight_unchanged_pairs) ... ok
+test_sqlite_public_replay (test_semantics.PublicEvidenceTests.test_sqlite_public_replay) ... ok
 test_all_frozen_mutations_reject (test_semantics.QuotientTests.test_all_frozen_mutations_reject) ... ok
 test_atom_permutation_and_variable_renaming (test_semantics.QuotientTests.test_atom_permutation_and_variable_renaming) ... ok
 test_duplicate_set_tuple_rejected (test_semantics.QuotientTests.test_duplicate_set_tuple_rejected) ... ok
@@ -39,6 +46,6 @@ test_oversplit_fails_minimality_not_congruence (test_semantics.QuotientTests.tes
 test_unreachable_states_are_excluded (test_semantics.QuotientTests.test_unreachable_states_are_excluded) ... ok
 
 ----------------------------------------------------------------------
-Ran 39 tests in 0.038s
+Ran 46 tests in 0.103s
 
 OK

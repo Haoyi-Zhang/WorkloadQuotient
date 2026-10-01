@@ -1,50 +1,68 @@
 {
   "all_scientific_results_equal": true,
-  "clean_input_mode": "fresh output directory from the final working artifact; matching archive-extraction rechecks are documented in CURRENT-STATE.md",
   "commands": [
     {
       "command": "regression-tests",
-      "cpu_seconds": 1.114833,
+      "cpu_seconds": 0.6765889999999999,
       "log": "logs/regression-tests.txt",
       "returncode": 0,
-      "wall_seconds": 1.166675911000084
+      "wall_seconds": 0.7169690719999835
     },
     {
       "command": "cascade",
-      "cpu_seconds": 1.3413370000000002,
+      "cpu_seconds": 0.8994050000000002,
       "log": "logs/cascade.txt",
       "returncode": 0,
-      "wall_seconds": 1.3715490480001336
+      "wall_seconds": 0.9181323239999983
     },
     {
       "command": "graphs",
-      "cpu_seconds": 1.2492449999999997,
+      "cpu_seconds": 0.7892039999999999,
       "log": "logs/graphs.txt",
       "returncode": 0,
-      "wall_seconds": 1.2690402890000314
+      "wall_seconds": 0.8180622249999487
     },
     {
       "command": "public-certificates",
-      "cpu_seconds": 0.8810189999999999,
+      "cpu_seconds": 0.513928,
       "log": "logs/public-certificates.txt",
       "returncode": 0,
-      "wall_seconds": 0.9196488840000256
+      "wall_seconds": 0.5650393619999932
     },
     {
       "command": "sqlite-replay",
-      "cpu_seconds": 0.8725370000000005,
+      "cpu_seconds": 0.5779799999999995,
       "log": "logs/sqlite-replay.txt",
       "returncode": 0,
-      "wall_seconds": 0.9171506129998761
+      "wall_seconds": 0.6183535469999697
     }
   ],
-  "comparison_excludes_only": [
-    "cpu_seconds",
-    "peak_rss_kib",
-    "wall_seconds"
-  ],
+  "comparison_policy": {
+    "all_other_fields": "exact comparison",
+    "environment_metadata_fields_reported_not_scientifically_compared": [
+      "engine_version"
+    ],
+    "volatile_measurement_fields_ignored": [
+      "cpu_seconds",
+      "peak_rss_kib",
+      "wall_seconds"
+    ]
+  },
+  "conservative_main_reproduction_obligation_components": {
+    "coloring_assignments": 203,
+    "family_block_pair_separators": 288,
+    "family_directed_containment_entries": 768,
+    "image_partitions": 3960,
+    "producer_charged_search_obligations": 3744,
+    "public_block_pair_separators": 0,
+    "public_directed_containment_entries": 32,
+    "sqlite_query_executions": 1024,
+    "tiny_ordered_query_pair_checks_36_per_legal_database": 92988
+  },
   "conservative_main_reproduction_obligations": 103007,
   "counts": {
+    "adapter_negative_control_evaluations": 64,
+    "adapter_negative_control_mismatches": 40,
     "base_graph_controls": 8,
     "cascade_cases": 16,
     "coloring_assignments": 203,
@@ -52,6 +70,7 @@
     "family_directed_containment_entries": 768,
     "figure_rows_rebuilt": 6,
     "frozen_certificates_rechecked": 56,
+    "hand_written_cq_adapters": 8,
     "illegal_graph_folds_rejected": 1,
     "image_partitions": 3960,
     "key_ablation_instances": 24,
@@ -61,23 +80,36 @@
     "public_block_pair_separators": 0,
     "public_directed_containment_entries": 32,
     "public_sql_pairs": 8,
-    "regression_test_methods": 42,
+    "regression_test_methods": 46,
+    "sql_null_input_cells_finitely_encoded": 50,
+    "sqlite_cq_adapter_evaluations": 1024,
     "sqlite_legal_databases": 64,
     "sqlite_query_executions": 1024,
+    "sqlite_sql_to_cq_set_comparisons": 1024,
     "tiny_legal_valuations": 2583,
     "tiny_query_evaluations": 15498,
     "unchanged_public_sql_queries": 16
   },
-  "cpu_seconds": 5.870440726,
+  "cpu_seconds": 4.045533611,
   "duckdb_replay": "NOT_RUN_PACKAGE_UNAVAILABLE",
-  "largest_child_peak_rss_kib": 97188,
-  "parent_peak_rss_kib": 108324,
+  "environment_metadata_drift": [],
+  "largest_child_peak_rss_kib": 97324,
+  "not_included_in_main_obligation_counter": [
+    "regression tests",
+    "scientific file comparisons",
+    "certificate rechecks",
+    "certificate mutation rejections",
+    "illegal graph-fold rejection",
+    "SQL-to-CQ adapter comparisons",
+    "adapter negative-control evaluations",
+    "figure rows rebuilt"
+  ],
+  "parent_peak_rss_kib": 127268,
   "process_swap_kib": 0,
-  "publication_readiness": "INTERNAL_SCIENTIFIC_PACKET_COMPLETE_EXTERNAL_SUBMISSION_NOT_CERTIFIED",
   "scientific_files_compared": 246,
-  "scope": "Finite code, exact generated evidence, public-fragment certificates, and an independent SQLite result-equality control; not an external review or a mechanized general proof.",
+  "scope": "Finite code, exact generated evidence, public-fragment certificates, SQLite pair-internal replay, and finite per-side SQL-set/CQ-set comparisons.  This is not an external review, a SQL parser validation, a NULL-semantics result, or a mechanized general proof.",
   "sqlite_replay": "PASSED",
   "status": "FINITE_REPRODUCTION_PASSED",
-  "wall_seconds": 6.047164333999945,
+  "wall_seconds": 4.21973608899998,
   "workers": 1
 }

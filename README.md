@@ -25,7 +25,7 @@ Use Linux/POSIX with Python 3.10 or newer. The reproduction uses only the Python
 python3 reproduce.py --output ../workload-reproduction
 ```
 
-The command sequentially runs 42 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. Only CPU time, wall time, and peak RSS are excluded from exact result comparison. Frozen inputs, certificates, witnesses, partitions, legal valuations, public SQL records, engine outputs, and rejection outcomes are not excluded.
+The command sequentially runs 46 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. CPU time, wall time, and peak RSS are volatile measurements. `engine_version` is retained and reported as environment metadata but is not a scientific equality field; every other result field is compared exactly. A version-only fixture must pass with reported drift, while a changed semantic-result fixture must fail.
 
 A successful `reproduction.json` is written only after every command and comparison succeeds. Existing output directories are never overwritten. A cap, timeout, or failure to construct a witness returns failure or `UNKNOWN`; it never certifies equivalence.
 
@@ -62,9 +62,11 @@ Exit code 0 is a successful finite check/generation; 1 is rejection or an I/O/in
 | Obligation-breaking quotient mutations | 16/16 rejected | `results/cascade/mutations.json` |
 | Additional illegal graph fold | rejected | `results/graphs/adjacent-color-mutation.json` |
 | Nonisomorphic optimum databases | 2, both size 9 | `results/graphs/nonunique-optimum.json` |
-| Regression tests | 42 passed | `tests/test_semantics.py` |
+| Regression tests | 46 passed | `tests/test_semantics.py` |
 | SQLite legal databases | 64 | `results/public/sqlite-replay.json` |
 | SQLite query executions | 1,024 | `results/public/sqlite-replay.json` |
+| SQLite-set to hand-written-CQ-set comparisons | 1,024, all equal | `results/public/sqlite-replay.json` |
+| Corrupted-adapter negative control | 40/64 databases expose the error | `results/public/sqlite-replay.json` |
 | DuckDB | not run: package unavailable | `results/engine-status.json` |
 
 The sixteen cascades are parameter cases of one construction, the eight graph controls are generated controls rather than public workloads, and the twenty-four ablations are not independent workload families. Finite counts validate implementations and exact instances; universal claims rely on proofs.
@@ -73,15 +75,15 @@ For every cascade case, the syntax machine has eight reachable states, current o
 
 ## Public SQL and engine control
 
-The original JOB `1a`–`1d`, `2a`–`2d` sample is retained in `inputs/public-screening.csv` as a negative control: all eight use `MIN` and are excluded unchanged. No full-JOB census or transformed-query result is inferred.
+The original JOB `1a`–`1d`, `2a`–`2d` sample is retained separately under `inputs/job-negative/`: all eight use `MIN` and are excluded unchanged. The manifest records the pinned commit, immutable Git blob identifiers, minimal excerpts, and exclusion reasons. Because the JOB mirror declares no repository license, complete query files are not redistributed. This is neither a full-JOB census nor a transformed-query experiment.
 
-Positive public evidence comes from SQLSolver's Calcite equivalence tests at commit `dcc2a91d8971a4c4d30b055f99d7d8428a1b754b`, redistributed under Apache-2.0 with its license and notice. `inputs/public/manifest.json` records the source paths, line numbers, exact unchanged SQL, schema, and admission rule. `inputs/public/SCREENING-METHOD.md` states the exact offline audit boundary, and an existing 42-test method now cross-checks all 181 screening rows, the eight admissions, the 16 retained SQL statements, the manifest, and all explicit CQ adapters. Each admitted two-state pair has a one-state quotient certificate.
+Positive public evidence comes from SQLSolver's Calcite equivalence tests at commit `dcc2a91d8971a4c4d30b055f99d7d8428a1b754b`, redistributed under Apache-2.0 with its license and notice. `inputs/public/manifest.json` records source lines, exact SQL, schema, and the admission rule. The eight CQ adapters are hand-written, not parser output. `inputs/public/adapter-contracts.json` and `ADAPTER-CONTRACTS.md` specify column positions, projections, equalities, output types, and the finite SQL-null correspondence; tests require those records to match the executable cases. Each two-state pair has a one-state quotient certificate.
 
-SQLite 3.46.1 evaluates all sixteen original statements on sixty-four deterministic databases satisfying the published primary-key/foreign-key schema. All 1,024 executions match under both bag and set comparison. This is a cross-check of result equality only. DuckDB could not be acquired and is explicitly `NOT_RUN_PACKAGE_UNAVAILABLE`; SQLite and the Python evaluator are not mislabeled as DuckDB.
+The retained host reports SQLite 3.46.1, but that version string is environment metadata rather than a claim-bearing equality field. SQLite evaluates all sixteen original statements on sixty-four deterministic legal databases: the 1,024 SQL executions agree within each pair for bags and sets. The same run performs 1,024 per-side set comparisons against the hand-written CQ adapters; all agree, while a corrupted projection is detected on 40 databases. Fifty SQL input cells contain `None`; each is mapped to a distinct fresh integer only for this finite adapter check. The theory itself has no nulls. DuckDB is explicitly `NOT_RUN_PACKAGE_UNAVAILABLE` and is not counted.
 
 ## Resource contract
 
-The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds and 300 wall seconds per child, zero accepted process swap, no more than 500,000 conservative obligations and 100,000 tiny legal valuations, 256 raw chase records, and 128 materialized tuples per generated witness. The final recorded run charged 103,007 obligations, 5.870 CPU seconds, 6.047 wall seconds, 97,188 KiB largest-child RSS, and 108,324 KiB parent RSS. These values establish closure, not speedup.
+The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds and 300 wall seconds per child, zero accepted process swap, no more than 500,000 conservative obligations and 100,000 tiny legal valuations, 256 raw chase records, and 128 materialized tuples per generated witness. The retained five-stage run charged 103,007 main obligations, 4.045533611 CPU seconds and 4.219736089 wall seconds, with 97,324 KiB largest-child RSS, 127,268 KiB parent RSS, and zero process swap. `results/clean-reproduction.json` lists every addend and the checks excluded from that heterogeneous counter. These values establish closure, not speedup.
 
 ## Organization
 
@@ -89,7 +91,7 @@ The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds an
 - `proofs/` — four standalone proof notes aligned with the manuscript.
 - `inputs/` — all generated cases, mutations, tiny model, public SQL, manifest, and negative screen.
 - `results/` — complete certificates, witnesses, partitions, oracle records, engine results, logs, and summaries.
-- `tests/` — 42 deterministic regression tests.
+- `tests/` — 46 deterministic regression tests.
 - `claim_evidence_ledger.csv` — every material claim mapped to proof/check/result/table and maturity.
 - `external_resources.csv` — source, URL, license/access note, acquisition, and integration inventory.
 - `reference-verification.csv` — one verified core-metadata record for every cited bibliography key, with the supporting publisher, DOI, author/institutional, venue, or stable scholarly source.

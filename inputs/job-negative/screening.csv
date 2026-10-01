@@ -1,0 +1,9 @@
+id,path,blob_sha,minimal_excerpt,decision,reason
+1a,1a.sql,cb464bb5ab19b837a644555479037829b3a12e78,"SELECT MIN(mc.note) AS production_note,",EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment
+1b,1b.sql,c471f862b712b2c5752acae1c9745a205608a83f,"SELECT MIN(mc.note) AS production_note,",EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment
+1c,1c.sql,41600c376b603fd34e124a0f7d031aae031dbe90,"SELECT MIN(mc.note) AS production_note,",EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment
+1d,1d.sql,96a6eda9a6b7156ec3c1f39242bc63072f75e90e,"SELECT MIN(mc.note) AS production_note,",EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment
+2a,2a.sql,6e6b46eddf92f4d390a1147fcd92a82fa006e129,SELECT MIN(t.title) AS movie_title,EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment
+2b,2b.sql,1c594b463f43752918f1c98c7c5fee84924271d1,SELECT MIN(t.title) AS movie_title,EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment
+2c,2c.sql,905453e8701455d22c8a3776940d184b9249c8ce,SELECT MIN(t.title) AS movie_title,EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment
+2d,2d.sql,b7f7cedf81c9106bd1e8dc9f8b90a73d057d25d4,SELECT MIN(t.title) AS movie_title,EXCLUDE,contains MIN aggregate outside locked positive equality-CQ fragment

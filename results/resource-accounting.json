@@ -1,35 +1,56 @@
 {
-  "accounting_boundary": "Final reproduction plus retained pre-lock pilots. Development-time editor commands, manuscript compilation, web acquisition, and every unit-test rerun are not represented as a complete all-tools CPU total.",
-  "claims": "The final scientific reproduction satisfies every frozen execution limit. Resource measurements support closure only, not algorithmic or database-engine performance.",
+  "accounting_boundary": "The retained final record is one actual five-stage Linux reproduction run. Development-time editor commands, manuscript compilation, web acquisition, and other reruns are outside this run record.",
+  "claims": "The scientific reproduction satisfies the frozen execution limits. Measurements support closure only, not algorithmic or database-engine performance.",
+  "comparison_policy": {
+    "all_other_fields": "exact comparison",
+    "environment_metadata_fields_reported_not_scientifically_compared": [
+      "engine_version"
+    ],
+    "volatile_measurement_fields_ignored": [
+      "cpu_seconds",
+      "peak_rss_kib",
+      "wall_seconds"
+    ]
+  },
+  "environment_metadata_drift": [],
   "final_reproduction": {
     "certificates_rechecked": 56,
     "conservative_obligations": 103007,
-    "cpu_seconds": 5.870440726,
-    "largest_child_peak_rss_kib": 97188,
-    "parent_peak_rss_kib": 108324,
+    "cpu_seconds": 4.045533611,
+    "largest_child_peak_rss_kib": 97324,
+    "not_included_in_obligation_counter": [
+      "regression tests",
+      "scientific file comparisons",
+      "certificate rechecks",
+      "certificate mutation rejections",
+      "illegal graph-fold rejection",
+      "SQL-to-CQ adapter comparisons",
+      "adapter negative-control evaluations",
+      "figure rows rebuilt"
+    ],
+    "obligation_components": {
+      "coloring_assignments": 203,
+      "family_block_pair_separators": 288,
+      "family_directed_containment_entries": 768,
+      "image_partitions": 3960,
+      "producer_charged_search_obligations": 3744,
+      "public_block_pair_separators": 0,
+      "public_directed_containment_entries": 32,
+      "sqlite_query_executions": 1024,
+      "tiny_ordered_query_pair_checks_36_per_legal_database": 92988
+    },
+    "parent_peak_rss_kib": 127268,
     "process_swap_kib": 0,
+    "regression_tests": 46,
     "scientific_files_compared": 246,
+    "sqlite_sql_executions": 1024,
+    "sqlite_sql_to_cq_set_comparisons": 1024,
     "status": "WITHIN_LIMITS",
     "tiny_legal_valuations": 2583,
-    "wall_seconds": 6.047164333999945,
+    "wall_seconds": 4.21973608899998,
     "workers": 1
   },
-  "interpretation": "The 128-tuple cap is an execution bound. Formula-only depth-seven and larger all-key cases do not claim materialized database execution.",
-  "retained_pilots": [
-    {
-      "activity": "depth-six all-key cascade pilot",
-      "cpu_seconds": 0.056397591,
-      "peak_rss_kib": 94888,
-      "process_swap_kib": 0,
-      "workers": 1
-    },
-    {
-      "activity": "legal-image pilot",
-      "cpu_seconds": 0.014595,
-      "peak_rss_kib": 93224,
-      "workers": 1
-    }
-  ],
+  "interpretation": "The 128-tuple cap is an execution bound. Formula-only depth-seven and larger all-key cases are not materialized.",
   "run_limits": {
     "address_space_gib": 2.5,
     "archive_bytes_ceiling": 134217728,

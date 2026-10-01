@@ -1,0 +1,1109 @@
+{
+  "adapters": [
+    {
+      "hand_written": true,
+      "id": "public-01",
+      "sides": [
+        {
+          "atoms": [
+            "EMP as EMP",
+            "DEPT as DEPT"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ]
+            ],
+            "head": [
+              "v:e1"
+            ]
+          },
+          "equalities": [
+            "EMP.DEPTNO = DEPT.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "EMP.ENAME"
+          ],
+          "side": 0,
+          "sql_text": "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT WHERE EMP.DEPTNO = DEPT.DEPTNO"
+        },
+        {
+          "atoms": [
+            "EMP as EMP0",
+            "DEPT as DEPT0"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ]
+            ],
+            "head": [
+              "v:e1"
+            ]
+          },
+          "equalities": [
+            "EMP0.DEPTNO = DEPT0.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "EMP0.ENAME"
+          ],
+          "side": 1,
+          "sql_text": "SELECT EMP0.ENAME FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO"
+        }
+      ],
+      "sql": [
+        "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT WHERE EMP.DEPTNO = DEPT.DEPTNO",
+        "SELECT EMP0.ENAME FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO"
+      ]
+    },
+    {
+      "hand_written": true,
+      "id": "public-02",
+      "sides": [
+        {
+          "atoms": [
+            "EMP as EMP"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e3",
+                "c:10"
+              ]
+            ],
+            "head": [
+              "v:e3"
+            ]
+          },
+          "equalities": [
+            "EMP.MGR = 10"
+          ],
+          "null_correspondence": "SQL WHERE MGR = 10 excludes NULL. In the finite encoding each NULL MGR receives a fresh integer distinct from rigid constant 10; the selected output is therefore non-NULL. This is not a general SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER; non-NULL after WHERE"
+          ],
+          "projection": [
+            "EMP.MGR"
+          ],
+          "side": 0,
+          "sql_text": "SELECT EMP.MGR FROM EMP AS EMP WHERE EMP.MGR = 10"
+        },
+        {
+          "atoms": [
+            "EMP as EMP0"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e3",
+                "c:10"
+              ]
+            ],
+            "head": [
+              "c:10"
+            ]
+          },
+          "equalities": [
+            "EMP0.MGR = 10"
+          ],
+          "null_correspondence": "SQL WHERE MGR = 10 excludes NULL. In the finite encoding each NULL MGR receives a fresh integer distinct from rigid constant 10; the selected output is therefore non-NULL. This is not a general SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER NOT NULL"
+          ],
+          "projection": [
+            "10"
+          ],
+          "side": 1,
+          "sql_text": "SELECT 10 AS MGR FROM EMP AS EMP0 WHERE EMP0.MGR = 10"
+        }
+      ],
+      "sql": [
+        "SELECT EMP.MGR FROM EMP AS EMP WHERE EMP.MGR = 10",
+        "SELECT 10 AS MGR FROM EMP AS EMP0 WHERE EMP0.MGR = 10"
+      ]
+    },
+    {
+      "hand_written": true,
+      "id": "public-03",
+      "sides": [
+        {
+          "atoms": [
+            "EMP as EMP",
+            "DEPT as DEPT",
+            "EMP as EMP0"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ],
+              [
+                "EMP",
+                [
+                  "v:f0",
+                  "v:f1",
+                  "v:f2",
+                  "v:f3",
+                  "v:f4",
+                  "v:f5",
+                  "v:f6",
+                  "v:f7",
+                  "v:f8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ],
+              [
+                "v:d0",
+                "v:f7"
+              ]
+            ],
+            "head": [
+              "v:e1"
+            ]
+          },
+          "equalities": [
+            "EMP.DEPTNO = DEPT.DEPTNO",
+            "DEPT.DEPTNO = EMP0.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "EMP.ENAME"
+          ],
+          "side": 0,
+          "sql_text": "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT, EMP AS EMP0 WHERE EMP.DEPTNO = DEPT.DEPTNO AND DEPT.DEPTNO = EMP0.DEPTNO"
+        },
+        {
+          "atoms": [
+            "EMP as EMP1",
+            "DEPT as DEPT0",
+            "EMP as EMP2"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ],
+              [
+                "EMP",
+                [
+                  "v:f0",
+                  "v:f1",
+                  "v:f2",
+                  "v:f3",
+                  "v:f4",
+                  "v:f5",
+                  "v:f6",
+                  "v:f7",
+                  "v:f8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ],
+              [
+                "v:d0",
+                "v:f7"
+              ]
+            ],
+            "head": [
+              "v:e1"
+            ]
+          },
+          "equalities": [
+            "EMP1.DEPTNO = DEPT0.DEPTNO",
+            "DEPT0.DEPTNO = EMP2.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "EMP1.ENAME"
+          ],
+          "side": 1,
+          "sql_text": "SELECT EMP1.ENAME FROM EMP AS EMP1 INNER JOIN DEPT AS DEPT0 ON EMP1.DEPTNO = DEPT0.DEPTNO INNER JOIN EMP AS EMP2 ON DEPT0.DEPTNO = EMP2.DEPTNO"
+        }
+      ],
+      "sql": [
+        "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT, EMP AS EMP0 WHERE EMP.DEPTNO = DEPT.DEPTNO AND DEPT.DEPTNO = EMP0.DEPTNO",
+        "SELECT EMP1.ENAME FROM EMP AS EMP1 INNER JOIN DEPT AS DEPT0 ON EMP1.DEPTNO = DEPT0.DEPTNO INNER JOIN EMP AS EMP2 ON DEPT0.DEPTNO = EMP2.DEPTNO"
+      ]
+    },
+    {
+      "hand_written": true,
+      "id": "public-04",
+      "sides": [
+        {
+          "atoms": [
+            "EMP as EMP",
+            "DEPT as DEPT",
+            "EMP as EMP0"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ],
+              [
+                "EMP",
+                [
+                  "v:f0",
+                  "v:f1",
+                  "v:f2",
+                  "v:f3",
+                  "v:f4",
+                  "v:f5",
+                  "v:f6",
+                  "v:f7",
+                  "v:f8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ],
+              [
+                "v:e0",
+                "v:f0"
+              ]
+            ],
+            "head": [
+              "v:e1"
+            ]
+          },
+          "equalities": [
+            "EMP.DEPTNO = DEPT.DEPTNO",
+            "EMP.EMPNO = EMP0.EMPNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "EMP.ENAME"
+          ],
+          "side": 0,
+          "sql_text": "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT, EMP AS EMP0 WHERE EMP.DEPTNO = DEPT.DEPTNO AND EMP.EMPNO = EMP0.EMPNO"
+        },
+        {
+          "atoms": [
+            "EMP as EMP1",
+            "DEPT as DEPT0",
+            "EMP as EMP2",
+            "DEPT as DEPT1",
+            "EMP as EMP3"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ],
+              [
+                "EMP",
+                [
+                  "v:f0",
+                  "v:f1",
+                  "v:f2",
+                  "v:f3",
+                  "v:f4",
+                  "v:f5",
+                  "v:f6",
+                  "v:f7",
+                  "v:f8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:g0",
+                  "v:g1"
+                ]
+              ],
+              [
+                "EMP",
+                [
+                  "v:h0",
+                  "v:h1",
+                  "v:h2",
+                  "v:h3",
+                  "v:h4",
+                  "v:h5",
+                  "v:h6",
+                  "v:h7",
+                  "v:h8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ],
+              [
+                "v:e0",
+                "v:f0"
+              ],
+              [
+                "v:e7",
+                "v:g0"
+              ],
+              [
+                "v:e0",
+                "v:h0"
+              ]
+            ],
+            "head": [
+              "v:e1"
+            ]
+          },
+          "equalities": [
+            "EMP1.DEPTNO = DEPT0.DEPTNO",
+            "EMP1.EMPNO = EMP2.EMPNO",
+            "EMP1.DEPTNO = DEPT1.DEPTNO",
+            "EMP1.EMPNO = EMP3.EMPNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "EMP1.ENAME"
+          ],
+          "side": 1,
+          "sql_text": "SELECT EMP1.ENAME FROM EMP AS EMP1 INNER JOIN DEPT AS DEPT0 ON EMP1.DEPTNO = DEPT0.DEPTNO INNER JOIN EMP AS EMP2 ON EMP1.EMPNO = EMP2.EMPNO INNER JOIN DEPT AS DEPT1 ON EMP1.DEPTNO = DEPT1.DEPTNO INNER JOIN EMP AS EMP3 ON EMP1.EMPNO = EMP3.EMPNO"
+        }
+      ],
+      "sql": [
+        "SELECT EMP.ENAME FROM EMP AS EMP, DEPT AS DEPT, EMP AS EMP0 WHERE EMP.DEPTNO = DEPT.DEPTNO AND EMP.EMPNO = EMP0.EMPNO",
+        "SELECT EMP1.ENAME FROM EMP AS EMP1 INNER JOIN DEPT AS DEPT0 ON EMP1.DEPTNO = DEPT0.DEPTNO INNER JOIN EMP AS EMP2 ON EMP1.EMPNO = EMP2.EMPNO INNER JOIN DEPT AS DEPT1 ON EMP1.DEPTNO = DEPT1.DEPTNO INNER JOIN EMP AS EMP3 ON EMP1.EMPNO = EMP3.EMPNO"
+      ]
+    },
+    {
+      "hand_written": true,
+      "id": "public-05",
+      "sides": [
+        {
+          "atoms": [
+            "EMP as EMP",
+            "DEPT as DEPT"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ]
+            ],
+            "head": [
+              "c:1"
+            ]
+          },
+          "equalities": [
+            "EMP.DEPTNO = DEPT.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER NOT NULL"
+          ],
+          "projection": [
+            "1"
+          ],
+          "side": 0,
+          "sql_text": "SELECT 1 FROM EMP AS EMP INNER JOIN DEPT AS DEPT ON EMP.DEPTNO = DEPT.DEPTNO"
+        },
+        {
+          "atoms": [
+            "EMP as EMP0",
+            "DEPT as DEPT0"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ]
+            ],
+            "head": [
+              "c:1"
+            ]
+          },
+          "equalities": [
+            "EMP0.DEPTNO = DEPT0.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER NOT NULL"
+          ],
+          "projection": [
+            "1"
+          ],
+          "side": 1,
+          "sql_text": "SELECT 1 FROM EMP AS EMP0, DEPT AS DEPT0 WHERE EMP0.DEPTNO = DEPT0.DEPTNO"
+        }
+      ],
+      "sql": [
+        "SELECT 1 FROM EMP AS EMP INNER JOIN DEPT AS DEPT ON EMP.DEPTNO = DEPT.DEPTNO",
+        "SELECT 1 FROM EMP AS EMP0, DEPT AS DEPT0 WHERE EMP0.DEPTNO = DEPT0.DEPTNO"
+      ]
+    },
+    {
+      "hand_written": true,
+      "id": "public-06",
+      "sides": [
+        {
+          "atoms": [
+            "DEPT as DEPT (inside derived table)"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:d0",
+                "c:10"
+              ],
+              [
+                "v:d0",
+                "c:10"
+              ]
+            ],
+            "head": [
+              "v:d1"
+            ]
+          },
+          "equalities": [
+            "DEPT.DEPTNO = 10",
+            "t.DEPTNO = 10 (duplicate after flattening)"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "t.NAME"
+          ],
+          "side": 0,
+          "sql_text": "SELECT t.NAME FROM (SELECT * FROM DEPT AS DEPT WHERE DEPT.DEPTNO = 10) AS t WHERE t.DEPTNO = 10"
+        },
+        {
+          "atoms": [
+            "DEPT as DEPT0"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:d0",
+                "c:10"
+              ]
+            ],
+            "head": [
+              "v:d1"
+            ]
+          },
+          "equalities": [
+            "DEPT0.DEPTNO = 10"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "TEXT NOT NULL"
+          ],
+          "projection": [
+            "DEPT0.NAME"
+          ],
+          "side": 1,
+          "sql_text": "SELECT DEPT0.NAME FROM DEPT AS DEPT0 WHERE DEPT0.DEPTNO = 10"
+        }
+      ],
+      "sql": [
+        "SELECT t.NAME FROM (SELECT * FROM DEPT AS DEPT WHERE DEPT.DEPTNO = 10) AS t WHERE t.DEPTNO = 10",
+        "SELECT DEPT0.NAME FROM DEPT AS DEPT0 WHERE DEPT0.DEPTNO = 10"
+      ]
+    },
+    {
+      "hand_written": true,
+      "id": "public-07",
+      "sides": [
+        {
+          "atoms": [
+            "EMP as EMP",
+            "EMP as EMP0"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "EMP",
+                [
+                  "v:f0",
+                  "v:f1",
+                  "v:f2",
+                  "v:f3",
+                  "v:f4",
+                  "v:f5",
+                  "v:f6",
+                  "v:f7",
+                  "v:f8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:f7"
+              ]
+            ],
+            "head": [
+              "c:1"
+            ]
+          },
+          "equalities": [
+            "EMP.DEPTNO = EMP0.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER NOT NULL"
+          ],
+          "projection": [
+            "1"
+          ],
+          "side": 0,
+          "sql_text": "SELECT 1 FROM EMP AS EMP INNER JOIN EMP AS EMP0 ON EMP.DEPTNO = EMP0.DEPTNO"
+        },
+        {
+          "atoms": [
+            "EMP as EMP1",
+            "EMP as EMP2"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "EMP",
+                [
+                  "v:f0",
+                  "v:f1",
+                  "v:f2",
+                  "v:f3",
+                  "v:f4",
+                  "v:f5",
+                  "v:f6",
+                  "v:f7",
+                  "v:f8"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:f7"
+              ]
+            ],
+            "head": [
+              "c:1"
+            ]
+          },
+          "equalities": [
+            "EMP1.DEPTNO = EMP2.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER NOT NULL"
+          ],
+          "projection": [
+            "1"
+          ],
+          "side": 1,
+          "sql_text": "SELECT 1 FROM EMP AS EMP1 INNER JOIN EMP AS EMP2 ON EMP1.DEPTNO = EMP2.DEPTNO"
+        }
+      ],
+      "sql": [
+        "SELECT 1 FROM EMP AS EMP INNER JOIN EMP AS EMP0 ON EMP.DEPTNO = EMP0.DEPTNO",
+        "SELECT 1 FROM EMP AS EMP1 INNER JOIN EMP AS EMP2 ON EMP1.DEPTNO = EMP2.DEPTNO"
+      ]
+    },
+    {
+      "hand_written": true,
+      "id": "public-08",
+      "sides": [
+        {
+          "atoms": [
+            "EMP as EMP",
+            "DEPT as DEPT"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ]
+            ],
+            "head": [
+              "c:1"
+            ]
+          },
+          "equalities": [
+            "EMP.DEPTNO = DEPT.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER NOT NULL"
+          ],
+          "projection": [
+            "1"
+          ],
+          "side": 0,
+          "sql_text": "SELECT 1 FROM EMP AS EMP INNER JOIN DEPT AS DEPT ON EMP.DEPTNO = DEPT.DEPTNO"
+        },
+        {
+          "atoms": [
+            "EMP as EMP0",
+            "DEPT as DEPT0",
+            "DEPT as DEPT1"
+          ],
+          "cq_query": {
+            "atoms": [
+              [
+                "EMP",
+                [
+                  "v:e0",
+                  "v:e1",
+                  "v:e2",
+                  "v:e3",
+                  "v:e4",
+                  "v:e5",
+                  "v:e6",
+                  "v:e7",
+                  "v:e8"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:d0",
+                  "v:d1"
+                ]
+              ],
+              [
+                "DEPT",
+                [
+                  "v:g0",
+                  "v:g1"
+                ]
+              ]
+            ],
+            "equalities": [
+              [
+                "v:e7",
+                "v:d0"
+              ],
+              [
+                "v:e7",
+                "v:g0"
+              ]
+            ],
+            "head": [
+              "c:1"
+            ]
+          },
+          "equalities": [
+            "EMP0.DEPTNO = DEPT0.DEPTNO",
+            "EMP0.DEPTNO = DEPT1.DEPTNO"
+          ],
+          "null_correspondence": "The selected output is non-NULL. Nullable payload cells are not SQL join/output operands for this adapter; the finite cross-check assigns every input NULL a distinct ordinary integer. This is not a SQL NULL semantics claim.",
+          "output_types": [
+            "INTEGER NOT NULL"
+          ],
+          "projection": [
+            "1"
+          ],
+          "side": 1,
+          "sql_text": "SELECT 1 FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO INNER JOIN DEPT AS DEPT1 ON EMP0.DEPTNO = DEPT1.DEPTNO"
+        }
+      ],
+      "sql": [
+        "SELECT 1 FROM EMP AS EMP INNER JOIN DEPT AS DEPT ON EMP.DEPTNO = DEPT.DEPTNO",
+        "SELECT 1 FROM EMP AS EMP0 INNER JOIN DEPT AS DEPT0 ON EMP0.DEPTNO = DEPT0.DEPTNO INNER JOIN DEPT AS DEPT1 ON EMP0.DEPTNO = DEPT1.DEPTNO"
+      ]
+    }
+  ],
+  "database_encoding": {
+    "boundary": "the encoding supports only the retained 64-database cross-check and does not extend the paper theory to SQL NULL",
+    "integer": "preserved exactly, including rigid constants 1 and 10",
+    "null": "each input NULL cell receives a distinct fresh integer; no selected SQL output is permitted to contain NULL",
+    "text": "injectively mapped to integers disjoint from all SQL integer values in the current finite database"
+  },
+  "finite_crosscheck_only": true,
+  "relations": {
+    "DEPT": [
+      {
+        "name": "DEPTNO",
+        "nullable": false,
+        "position": 0,
+        "sql_type": "INTEGER",
+        "theory_role": "rigid integer value; primary key"
+      },
+      {
+        "name": "NAME",
+        "nullable": false,
+        "position": 1,
+        "sql_type": "VARCHAR(10)",
+        "theory_role": "injectively encoded integer"
+      }
+    ],
+    "EMP": [
+      {
+        "name": "EMPNO",
+        "nullable": false,
+        "position": 0,
+        "sql_type": "INTEGER",
+        "theory_role": "rigid integer value; primary key"
+      },
+      {
+        "name": "ENAME",
+        "nullable": false,
+        "position": 1,
+        "sql_type": "VARCHAR(20)",
+        "theory_role": "injectively encoded integer"
+      },
+      {
+        "name": "JOB",
+        "nullable": false,
+        "position": 2,
+        "sql_type": "VARCHAR(10)",
+        "theory_role": "injectively encoded integer"
+      },
+      {
+        "name": "MGR",
+        "nullable": true,
+        "position": 3,
+        "sql_type": "INTEGER",
+        "theory_role": "integer when non-NULL; each NULL cell gets a fresh finite-check sentinel"
+      },
+      {
+        "name": "HIREDATE",
+        "nullable": false,
+        "position": 4,
+        "sql_type": "INTEGER",
+        "theory_role": "rigid integer value"
+      },
+      {
+        "name": "SAL",
+        "nullable": false,
+        "position": 5,
+        "sql_type": "INTEGER",
+        "theory_role": "rigid integer value"
+      },
+      {
+        "name": "COMM",
+        "nullable": false,
+        "position": 6,
+        "sql_type": "INTEGER",
+        "theory_role": "rigid integer value"
+      },
+      {
+        "name": "DEPTNO",
+        "nullable": false,
+        "position": 7,
+        "sql_type": "INTEGER",
+        "theory_role": "rigid integer value; foreign key to DEPT[0]"
+      },
+      {
+        "name": "SLACKER",
+        "nullable": true,
+        "position": 8,
+        "sql_type": "INTEGER",
+        "theory_role": "integer when non-NULL; each NULL cell gets a fresh finite-check sentinel"
+      }
+    ]
+  },
+  "source_commit": "dcc2a91d8971a4c4d30b055f99d7d8428a1b754b",
+  "source_path": "sqlsolver_data/calcite/calcite_tests",
+  "source_repository": "https://github.com/SJTU-IPADS/SQLSolver",
+  "theory_semantics": "positive equality conjunctive queries under set semantics over an integer domain with rigid constants and no NULL"
+}

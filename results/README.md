@@ -1,10 +1,10 @@
 # Recorded results
 
-This directory contains the complete frozen scientific outputs used by the manuscript and reproduction wrapper. Timing and RSS fields are volatile; all other scientific fields are compared exactly during reproduction.
+This directory contains the frozen scientific outputs used by the manuscript and reproduction wrapper. Timing and RSS fields are volatile. `engine_version` is retained as environment metadata and reported separately; every other result field is compared exactly.
 
 ## Top-level summaries
 
-- `clean-reproduction.json` — latest complete reproduction summary: 246 files, 56 certificates, 42 tests, 103,007 conservative obligations, SQLite replay passed.
+- `clean-reproduction.json` — one actual five-stage reproduction summary: 246 files, 56 certificates, 46 tests, 103,007 explicitly itemized main obligations, SQLite replay and SQL--CQ adapter comparisons passed.
 - `direct-command-checks.json` — direct verifier and producer results for cascade case 06, including deterministic certificate equality.
 - `engine-status.json` — SQLite execution status and explicit DuckDB non-execution.
 - `resource-accounting.json` — limits, measured final run, and accounting boundary.
@@ -21,9 +21,9 @@ This directory contains the complete frozen scientific outputs used by the manus
 
 ## Public fragment
 
-`public/` contains eight quotient certificates derived from sixteen unchanged SQLSolver Calcite statements, a case table, and the SQLite 3.46.1 replay. All public pairs are equivalent in both directions under the locked set-valued fragment and minimize to a singleton quotient. The engine control uses sixty-four deterministic legal `EMP`/`DEPT` databases and reports 1,024 query executions; bag and set results agree for every pair/database combination.
+`public/` contains eight quotient certificates derived from sixteen unchanged SQLSolver Calcite statements, a case table, and the SQLite replay. All pairs are equivalent in both directions under the locked set-valued fragment and minimize to a singleton quotient. Over sixty-four deterministic legal `EMP`/`DEPT` databases, 1,024 SQL executions agree within each pair for bags and sets; 1,024 per-side set comparisons against the hand-written CQ adapters also agree. A corrupted adapter is detected. The recorded SQLite version is environment metadata, not a semantic equality field.
 
-The separate `../inputs/public-screening.csv` retains the earlier JOB negative screen. It is not included in the positive public-case count.
+The independent JOB negative screen is under `../inputs/job-negative/`; `../inputs/public-screening.csv` is only the 181-pair SQLSolver positive-source screening table. JOB is not included in the positive public-case count.
 
 ## Logs
 

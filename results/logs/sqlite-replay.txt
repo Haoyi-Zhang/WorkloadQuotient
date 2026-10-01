@@ -1,0 +1,101 @@
+{
+  "adapter_error_negative_control_rejected": true,
+  "adapter_negative_control_evaluations": 64,
+  "adapter_negative_control_mismatches": 40,
+  "all_bag_results_equal_within_sql_pairs": true,
+  "all_set_results_equal_within_sql_pairs": true,
+  "all_sql_to_cq_set_results_equal": true,
+  "cq_adapter_evaluations": 1024,
+  "engine": "sqlite",
+  "engine_version": "3.46.1",
+  "engine_version_role": "environment metadata only; exact semantic fields are compared independently of this string",
+  "finite_encoding": {
+    "integers": "preserved exactly",
+    "null": "each input NULL cell receives a fresh ordinary integer; selected outputs may not contain NULL",
+    "text": "injective integers disjoint from SQL integer values within each database"
+  },
+  "hand_written_cq_adapters": 8,
+  "legal_databases": 64,
+  "null_input_cells_encoded": 50,
+  "pair_statistics": {
+    "public-01": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 4,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    },
+    "public-02": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 4,
+      "max_set_rows": 1,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    },
+    "public-03": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 64,
+      "max_set_rows": 4,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    },
+    "public-04": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 4,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    },
+    "public-05": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 1,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    },
+    "public-06": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 1,
+      "max_set_rows": 1,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    },
+    "public-07": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 64,
+      "max_set_rows": 1,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    },
+    "public-08": {
+      "bag_equal": 64,
+      "databases": 64,
+      "left_sql_cq_set_equal": 64,
+      "max_bag_rows": 8,
+      "max_set_rows": 1,
+      "right_sql_cq_set_equal": 64,
+      "set_equal": 64
+    }
+  },
+  "public_pairs": 8,
+  "query_executions": 1024,
+  "scope": "Sixty-four deterministic legal Calcite EMP/DEPT databases.  SQL pair-internal set/bag equality and per-side SQL-set versus hand-written-CQ-set equality are finite checks only; no parser, compiler, general SQL, NULL-semantics, latency, or optimizer claim.",
+  "seed": 20260918,
+  "sql_to_cq_set_comparisons": 1024,
+  "status": "ENGINE_REPLAY_PASSED",
+  "theory_null_semantics_claim": false
+}
