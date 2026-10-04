@@ -19,10 +19,4 @@ not include the ACM class or bibliography style. Those unchanged assets and thei
 supplied LaTeX Project Public License remain in the separate paper directory of
 the complete project.
 
-Substantive AI assistance was used in formulation, proof development, literature
-analysis, implementation, test construction, execution analysis, and manuscript
-preparation. Producer and checker are separately implemented but were developed
-within the same research process. They are not separate human reviewers, a blind
-external review, or a proof-assistant kernel. No external model API or model
-execution was used by the experiments. No external submission or public upload
-is represented as completed.
+Producer and checker are separately implemented but were developed within the same research process. They are not independent reviewers, a blind external review or a proof-assistant kernel. No external model API or model execution was used by the experiments.
