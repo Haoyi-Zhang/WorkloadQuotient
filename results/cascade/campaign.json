@@ -2,7 +2,7 @@
   "boundary_probes_without_materialization": 5,
   "cpu_seconds": 0.3959327210000001,
   "directed_family_containment_checks": 256,
-  "duckdb_replay": "NOT_RUN_UNAVAILABLE",
+  "duckdb_replay": "NOT_RUN_THIS_STAGE",
   "equivalence_and_signature_obligations": 676,
   "families": 16,
   "family_separator_checks": 96,

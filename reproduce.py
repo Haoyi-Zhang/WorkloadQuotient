@@ -232,7 +232,7 @@ def main() -> int:
             "process_swap_kib": 0,
             "workers": 1,
             "sqlite_replay": "PASSED",
-            "duckdb_replay": "NOT_RUN_PACKAGE_UNAVAILABLE",
+            "duckdb_replay": "NOT_RUN_THIS_CAMPAIGN",
             "scope": (
                 "Finite code, exact generated evidence, public-fragment certificates, SQLite pair-internal replay, "
                 "and finite per-side SQL-set/CQ-set comparisons.  This is not an external review, a SQL parser "

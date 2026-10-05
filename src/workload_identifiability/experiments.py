@@ -167,6 +167,6 @@ def campaign(out:Path):
             'boundary_probes_without_materialization':len(bound),
             'cpu_seconds':time.process_time()-start,'wall_seconds':time.monotonic()-wall,
             'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'process_swap_kib':swap,
-            'workers':1,'duckdb_replay':'NOT_RUN_UNAVAILABLE',
+            'workers':1,'duckdb_replay':'NOT_RUN_THIS_STAGE',
             'randomness':'None; all inputs and enumeration order are deterministic.'}
     dump(out/'results/campaign.json',result);signal.alarm(0);return result
