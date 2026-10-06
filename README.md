@@ -25,7 +25,7 @@ Use Linux/POSIX with Python 3.10 or newer. The reproduction uses only the Python
 python3 reproduce.py --output ../workload-reproduction
 ```
 
-The command sequentially runs 46 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. CPU time, wall time, and peak RSS are volatile measurements. `engine_version` is retained and reported as environment metadata but is not a scientific equality field; every other result field is compared exactly. A version-only fixture must pass with reported drift, while a changed semantic-result fixture must fail.
+The command sequentially runs 48 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. CPU time, wall time, and peak RSS are volatile measurements. `engine_version` is retained and reported as environment metadata but is not a scientific equality field; every other result field is compared exactly. A version-only fixture must pass with reported drift, while a changed semantic-result fixture must fail. The frozen Linux summary records the earlier 46-test run; it is not rewritten as a measurement of the expanded suite.
 
 A successful `reproduction.json` is written only after every command and comparison succeeds. Existing output directories are never overwritten. A cap, timeout, or failure to construct a witness returns failure or `UNKNOWN`; it never certifies equivalence.
 
@@ -62,7 +62,7 @@ Exit code 0 is a successful finite check/generation; 1 is rejection or an I/O/in
 | Obligation-breaking quotient mutations | 16/16 rejected | `results/cascade/mutations.json` |
 | Additional illegal graph fold | rejected | `results/graphs/adjacent-color-mutation.json` |
 | Nonisomorphic optimum databases | 2, both size 9 | `results/graphs/nonunique-optimum.json` |
-| Regression tests | 46 passed | `tests/test_semantics.py` |
+| Regression tests | 48 current; 46 in the frozen Linux run | `tests/test_semantics.py`, `tests/test_family_boundaries.py` |
 | SQLite legal databases | 64 | `results/public/sqlite-replay.json` |
 | SQLite query executions | 1,024 | `results/public/sqlite-replay.json` |
 | SQLite-set to hand-written-CQ-set comparisons | 1,024, all equal | `results/public/sqlite-replay.json` |
@@ -70,6 +70,8 @@ Exit code 0 is a successful finite check/generation; 1 is rejection or an I/O/in
 | DuckDB | not run: package unavailable | `results/engine-status.json` |
 
 The sixteen cascades are parameter cases of one construction, the eight graph controls are generated controls rather than public workloads, and the twenty-four ablations are not independent workload families. Finite counts validate implementations and exact instances; universal claims rely on proofs.
+
+The current component checks also passed on Windows with Python 3.12.14 and SQLite 3.53.1: all 56 certificates and the checked frozen semantic outputs agreed, including the tiny oracle, graph partitions, mutations, and SQL replay. The added family tests check 67 admitted graphs on two through four vertices (8,923 image partitions) against the separate coloring oracle and 30 cascade key subsets through depth four against the run-length formula and legal witnesses. These are additional generated checks, not public workloads. The Windows checks did not execute `reproduce.py` or validate its Linux resource telemetry. The workflow in `.github/workflows/scientific-checks.yml` is configured to run that bounded command on Ubuntu 24.04 and upload raw outputs even on failure; its remote execution is not claimed here.
 
 For every cascade case, the syntax machine has eight reachable states, current output has two classes, and future behavior has four classes. With all identifier keys, depths one through six have minima 3, 7, 15, 31, 63, and 127. Without nonroot identifier keys, the minima are 3, 5, 7, 9, 11, and 13. At depth seven the all-key theorem gives 255; that over-cap database is not materialized.
 
@@ -91,7 +93,7 @@ The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds an
 - `proofs/` — four standalone proof notes aligned with the manuscript.
 - `inputs/` — all generated cases, mutations, tiny model, public SQL, manifest, and negative screen.
 - `results/` — complete certificates, witnesses, partitions, oracle records, engine results, logs, and summaries.
-- `tests/` — 46 deterministic regression tests.
+- `tests/` — 48 deterministic regression tests.
 - `claim_evidence_ledger.csv` — every material claim mapped to proof/check/result/table and maturity.
 - `external_resources.csv` — source, URL, license/access note, acquisition, and integration inventory.
 - `reference-verification.csv` — one verified core-metadata record for every cited bibliography key, with the supporting publisher, DOI, author/institutional, venue, or stable scholarly source.

@@ -29,7 +29,7 @@ from workload_identifiability.evidence_compare import (  # noqa: E402
     scientific_view,
 )
 
-EXPECTED_REGRESSION_TESTS = 46
+EXPECTED_REGRESSION_TESTS = 48
 
 
 def current_swap_kib() -> int:

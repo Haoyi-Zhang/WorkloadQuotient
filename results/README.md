@@ -13,7 +13,7 @@ This directory contains the frozen scientific outputs used by the manuscript and
 
 ## Cascade
 
-`cascade/` contains sixteen frozen quotient certificates and matching minimum witnesses, the exact family table, six depth-boundary formula probes, two exhaustive tiny-domain oracles, and sixteen rejected mutation records. The executed depths are one through six. Formula-only all-key probes at depths seven through eleven are not materialized above the 128-tuple cap.
+`cascade/` contains sixteen frozen quotient certificates and matching minimum witnesses, the exact family table, five depth-boundary formula probes, two exhaustive tiny-domain oracles, and sixteen rejected mutation records. The executed depths are one through six. Formula-only all-key probes at depths seven through eleven are not materialized above the 128-tuple cap.
 
 ## Graphs
 
