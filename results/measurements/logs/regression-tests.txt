@@ -1,0 +1,53 @@
+test_admitted_small_graph_image_minima (test_family_boundaries.FamilyBoundaries.test_admitted_small_graph_image_minima) ... ok
+test_every_small_cascade_key_subset (test_family_boundaries.FamilyBoundaries.test_every_small_cascade_key_subset) ... ok
+test_bad_fk_target_rejected (test_semantics.ChaseTests.test_bad_fk_target_rejected) ... ok
+test_boolean_true_and_false (test_semantics.ChaseTests.test_boolean_true_and_false) ... ok
+test_child_filter_not_eliminable (test_semantics.ChaseTests.test_child_filter_not_eliminable) ... ok
+test_cyclic_query_rejected (test_semantics.ChaseTests.test_cyclic_query_rejected) ... ok
+test_equalities_propagate_through_key (test_semantics.ChaseTests.test_equalities_propagate_through_key) ... ok
+test_explicit_equalities_checked_before_acyclicity (test_semantics.ChaseTests.test_explicit_equalities_checked_before_acyclicity) ... ok
+test_fk_join_equivalence (test_semantics.ChaseTests.test_fk_join_equivalence) ... ok
+test_guard_clash (test_semantics.ChaseTests.test_guard_clash) ... ok
+test_guard_only_and_head_only_constants_ground_safely (test_semantics.ChaseTests.test_guard_only_and_head_only_constants_ground_safely) ... ok
+test_head_order_is_observable (test_semantics.ChaseTests.test_head_order_is_observable) ... ok
+test_key_constant_clash (test_semantics.ChaseTests.test_key_constant_clash) ... ok
+test_negative_constants (test_semantics.ChaseTests.test_negative_constants) ... ok
+test_noncanonical_constants_rejected (test_semantics.ChaseTests.test_noncanonical_constants_rejected) ... ok
+test_normalized_tuple_cap_unknown (test_semantics.ChaseTests.test_normalized_tuple_cap_unknown) ... ok
+test_projection_is_set_valued (test_semantics.ChaseTests.test_projection_is_set_valued) ... ok
+test_query_acyclicity_not_schema_acyclicity (test_semantics.ChaseTests.test_query_acyclicity_not_schema_acyclicity) ... ok
+test_reflexive_containment (test_semantics.ChaseTests.test_reflexive_containment) ... ok
+test_repeated_variable (test_semantics.ChaseTests.test_repeated_variable) ... ok
+test_unfolding_cap_unknown (test_semantics.ChaseTests.test_unfolding_cap_unknown) ... ok
+test_unsafe_head_rejected (test_semantics.ChaseTests.test_unsafe_head_rejected) ... ok
+test_cap_checked_before_witness_materialization (test_semantics.MinimumTests.test_cap_checked_before_witness_materialization) ... ok
+test_chromatic_numbers (test_semantics.MinimumTests.test_chromatic_numbers) ... ok
+test_constant_anchored_fold_is_needed (test_semantics.MinimumTests.test_constant_anchored_fold_is_needed) ... ok
+test_image_cap_never_returns_best_so_far (test_semantics.MinimumTests.test_image_cap_never_returns_best_so_far) ... ok
+test_image_exhaustion_and_equivalence (test_semantics.MinimumTests.test_image_exhaustion_and_equivalence) ... ok
+test_key_fold_rejected (test_semantics.MinimumTests.test_key_fold_rejected) ... ok
+test_mixed_key_mapping_groups_by_mapped_target_key (test_semantics.MinimumTests.test_mixed_key_mapping_groups_by_mapped_target_key) ... ok
+test_mixed_keys_minimum_is_legal (test_semantics.MinimumTests.test_mixed_keys_minimum_is_legal) ... ok
+test_negative_condition_not_only_legality (test_semantics.MinimumTests.test_negative_condition_not_only_legality) ... ok
+test_partition_count_matches_enumeration (test_semantics.MinimumTests.test_partition_count_matches_enumeration) ... ok
+test_terminal_identifier_key_changes_no_size (test_semantics.MinimumTests.test_terminal_identifier_key_changes_no_size) ... ok
+test_two_nonisomorphic_optima (test_semantics.MinimumTests.test_two_nonisomorphic_optima) ... ok
+test_unsatisfiable_source_has_no_image (test_semantics.MinimumTests.test_unsatisfiable_source_has_no_image) ... ok
+test_all_public_pairs_collapse (test_semantics.PublicEvidenceTests.test_all_public_pairs_collapse) ... ok
+test_engine_version_is_metadata_but_semantic_change_fails (test_semantics.PublicEvidenceTests.test_engine_version_is_metadata_but_semantic_change_fails) ... ok
+test_job_negative_screen_is_independent_and_traceable (test_semantics.PublicEvidenceTests.test_job_negative_screen_is_independent_and_traceable) ... ok
+test_public_adapter_contract_is_exact (test_semantics.PublicEvidenceTests.test_public_adapter_contract_is_exact) ... ok
+test_public_manifest_has_eight_unchanged_pairs (test_semantics.PublicEvidenceTests.test_public_manifest_has_eight_unchanged_pairs) ... ok
+test_sqlite_public_replay (test_semantics.PublicEvidenceTests.test_sqlite_public_replay) ... ok
+test_all_frozen_mutations_reject (test_semantics.QuotientTests.test_all_frozen_mutations_reject) ... ok
+test_atom_permutation_and_variable_renaming (test_semantics.QuotientTests.test_atom_permutation_and_variable_renaming) ... ok
+test_duplicate_set_tuple_rejected (test_semantics.QuotientTests.test_duplicate_set_tuple_rejected) ... ok
+test_eight_four_and_two_are_different_objects (test_semantics.QuotientTests.test_eight_four_and_two_are_different_objects) ... ok
+test_obligation_budget_preflights (test_semantics.QuotientTests.test_obligation_budget_preflights) ... ok
+test_oversplit_fails_minimality_not_congruence (test_semantics.QuotientTests.test_oversplit_fails_minimality_not_congruence) ... ok
+test_unreachable_states_are_excluded (test_semantics.QuotientTests.test_unreachable_states_are_excluded) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 1.213s
+
+OK
