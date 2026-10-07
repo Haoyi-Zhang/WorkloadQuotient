@@ -25,7 +25,7 @@ Use Linux/POSIX with Python 3.10 or newer. The reproduction uses only the Python
 python3 reproduce.py --output ../workload-reproduction
 ```
 
-The command sequentially runs 48 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. CPU time, wall time, and peak RSS are volatile measurements. `engine_version` is retained and reported as environment metadata but is not a scientific equality field; every other result field is compared exactly. A version-only fixture must pass with reported drift, while a changed semantic-result fixture must fail. The frozen Linux summary records the earlier 46-test run; it is not rewritten as a measurement of the expanded suite.
+The command sequentially runs 54 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. CPU time, wall time, and peak RSS are volatile measurements. `engine_version` is retained and reported as environment metadata but is not a scientific equality field; every other result field is compared exactly. A version-only fixture must pass with reported drift, while a changed semantic-result fixture must fail. The frozen Linux summary records the earlier 46-test run and the retained Ubuntu measurement covers 48 tests; neither is rewritten as a measurement of the expanded suite.
 
 A successful `reproduction.json` is written only after every command and comparison succeeds. Existing output directories are never overwritten. A cap, timeout, or failure to construct a witness returns failure or `UNKNOWN`; it never certifies equivalence.
 
@@ -62,7 +62,7 @@ Exit code 0 is a successful finite check/generation; 1 is rejection or an I/O/in
 | Obligation-breaking quotient mutations | 16/16 rejected | `results/cascade/mutations.json` |
 | Additional illegal graph fold | rejected | `results/graphs/adjacent-color-mutation.json` |
 | Nonisomorphic optimum databases | 2, both size 9 | `results/graphs/nonunique-optimum.json` |
-| Regression tests | 48 current; 46 in the frozen Linux run | `tests/test_semantics.py`, `tests/test_family_boundaries.py` |
+| Regression tests | 54 current; 46 frozen / 48 retained Ubuntu | `tests/test_semantics.py`, `tests/test_family_boundaries.py`, `tests/test_match_rows.py` |
 | SQLite legal databases | 64 | `results/public/sqlite-replay.json` |
 | SQLite query executions | 1,024 | `results/public/sqlite-replay.json` |
 | SQLite-set to hand-written-CQ-set comparisons | 1,024, all equal | `results/public/sqlite-replay.json` |
@@ -93,7 +93,7 @@ The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds an
 - `proofs/` — four standalone proof notes aligned with the manuscript.
 - `inputs/` — all generated cases, mutations, tiny model, public SQL, manifest, and negative screen.
 - `results/` — complete certificates, witnesses, partitions, oracle records, engine results, logs, and summaries.
-- `tests/` — 48 deterministic regression tests.
+- `tests/` — 54 deterministic regression tests.
 - `claim_evidence_ledger.csv` — every material claim mapped to proof/check/result/table and maturity.
 - `external_resources.csv` — source, URL, license/access note, acquisition, and integration inventory.
 - `reference-verification.csv` — one verified core-metadata record for every cited bibliography key, with the supporting publisher, DOI, author/institutional, venue, or stable scholarly source.
@@ -101,6 +101,8 @@ The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds an
 - `THIRD-PARTY-NOTICES.md` and `third_party/` — redistribution notices.
 
 The repository does not require the paper directory, a private path, an omitted cache, a network service, a model API, or an external controller.
+
+Producer joins retain stable atom order and lexicographic row order, but prepare a relation's ordered rows only on its first visit within one `matches` call. This local reuse does not alter the independent verifier or image enumeration. The six self-contained `test_match_rows.py` methods compare 12,288 complete ordered matches with a literal Cartesian reference and 2,048 answer sets with the verifier's separate evaluator; they also check duplicates, first-map choice, lazy/call-local reuse, unchanged counters and admission limits, and checker independence. Run them portably with `python3 -m unittest discover -s tests -p test_match_rows.py -v`. They passed as finite component checks, not a full 54-test Linux reproduction or a timing measurement.
 
 ## Interpretation and external-use boundary
 

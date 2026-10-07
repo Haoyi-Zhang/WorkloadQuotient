@@ -168,6 +168,7 @@ def matches(q, facts, wanted_head=None, first=False):
     """Indexed relational joins over a finite instance, with rigid constants."""
     atoms=sorted(q['atoms'],key=lambda a:len(facts.get(a[0],())))
     answers=[]
+    ordered_rows={}
     def rec(i,env):
         if i==len(atoms):
             get=lambda t:t if is_const(t) else env[t]
@@ -175,7 +176,9 @@ def matches(q, facts, wanted_head=None, first=False):
             if wanted_head is not None and tuple(get(t) for t in q['head'])!=tuple(wanted_head): return False
             answers.append(dict(env)); return first
         r,terms=atoms[i]
-        for row in sorted(facts.get(r,())):
+        if r not in ordered_rows:
+            ordered_rows[r]=tuple(sorted(facts.get(r,())))
+        for row in ordered_rows[r]:
             new=dict(env); ok=True
             for t,v in zip(terms,row):
                 if is_const(t):
