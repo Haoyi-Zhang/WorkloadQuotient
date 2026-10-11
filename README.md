@@ -96,7 +96,7 @@ The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds an
 - `tests/` — 54 deterministic regression tests.
 - `claim_evidence_ledger.csv` — every material claim mapped to proof/check/result/table and maturity.
 - `external_resources.csv` — source, URL, license/access note, acquisition, and integration inventory.
-- `reference-verification.csv` — one verified core-metadata record for every cited bibliography key, with the supporting publisher, DOI, author/institutional, venue, or stable scholarly source.
+- `reference-verification.csv` — records for all 50 cited bibliography keys: 41 historical rows retained and nine added primary-source metadata/bounded-context checks, with each check's extent in its notes. The added rows do not certify complete-source reading.
 - `literature-reading.csv` — the 22-paper calibration plus two additional close readings.
 - `THIRD-PARTY-NOTICES.md` and `third_party/` — redistribution notices.
 
