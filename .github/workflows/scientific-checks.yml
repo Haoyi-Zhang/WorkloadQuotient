@@ -31,6 +31,10 @@ jobs:
           mkdir -p "$RUNNER_TEMP/p064-scientific-raw"
           ulimit -v 2621440
           ulimit -t 240
+          python -B tests/regression_suffix_bound.py \
+            2>&1 | tee "$RUNNER_TEMP/p064-scientific-raw/suffix-normal.log"
+          python -B -O tests/regression_suffix_bound.py \
+            2>&1 | tee "$RUNNER_TEMP/p064-scientific-raw/suffix-optimized.log"
           timeout --signal=TERM --kill-after=5s 310s \
             python -B reproduce.py \
               --output "$RUNNER_TEMP/p064-scientific-raw/reproduction" \

@@ -41,9 +41,9 @@ For uniqueness, a reachable minimum machine cannot have two states with the same
 
 ## Lemma Q4: bounded distinguishing suffixes
 
-For n reachable states, any inequivalent pair has a distinguishing word of length at most binomial(n,2)-1. The case n=1 has no inequivalent pair.
+For n reachable states and c0 current-output equivalence classes, any inequivalent pair has a distinguishing word of length at most n-c0, hence at most n-2. If c0=1, there is no inequivalent pair.
 
-**Proof.** Run breadth-first search on unordered state pairs, starting with the pair. A pair whose present outputs differ is accepting. If no accepting pair is reachable, closure under actions gives identical observations for every word, contradicting inequivalence. A shortest accepting path contains no repeated unordered pair: deleting the segment between repeats leaves a shorter accepting path. No diagonal pair can lie on this path because deterministic successors of equal states remain equal and can never be accepting. There are binomial(n,2) non-diagonal unordered pairs, so the path has at most that many vertices and one fewer edges. Symmetry of output inequality makes forgetting orientation harmless. QED.
+**Proof.** Theorem Q2 identifies P_i with agreement through word length i. Starting from c0 blocks, there are at most n-c0 strict refinements before the fixed point, so every inequivalent pair is separated by P_(n-c0). If c0=1, the one-block P0 is already stable under all actions and all states are equivalent. Otherwise c0>=2, yielding n-2. This last bound is tight: in a unary n-state chain, make the final state absorbing and give it a different output from all earlier states. The first two states are first distinguished after n-2 actions. Breadth-first search on unordered state pairs finds a shortest distinguishing suffix; unequal outputs are accepting and diagonal pairs can never accept. QED.
 
 At the terminal pair, Theorem F4 supplies a finite legal database in one of the two failed containment directions. One such database is enough: no sequence of different databases is needed along the word. Shortest-word search does not by itself optimize database size, and we make no joint word-length/database-size optimization claim.
 
