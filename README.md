@@ -25,7 +25,7 @@ Use Linux/POSIX with Python 3.10 or newer. The reproduction uses only the Python
 python3 reproduce.py --output ../workload-reproduction
 ```
 
-The command sequentially runs 58 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. CPU time, wall time, and peak RSS are volatile measurements. `engine_version` is retained and reported as environment metadata but is not a scientific equality field; every other result field is compared exactly. A version-only fixture must pass with reported drift, while a changed semantic-result fixture must fail. The frozen Linux summary records the earlier 46-test run and the retained Ubuntu measurement covers 48 tests; neither is rewritten as a measurement of the expanded suite.
+The command sequentially runs 54 regression tests, recreates the cascade, graph, public-certificate, and SQLite campaigns, compares 246 scientific files, replays all 56 certificates through the verifier, and rebuilds the cascade plot data. CPU time, wall time, and peak RSS are volatile measurements. `engine_version` is retained and reported as environment metadata but is not a scientific equality field; every other result field is compared exactly. A version-only fixture must pass with reported drift, while a changed semantic-result fixture must fail. The frozen Linux summary records the earlier 46-test run and the retained Ubuntu measurement covers 48 tests; neither is rewritten as a measurement of the expanded suite.
 
 A successful `reproduction.json` is written only after every command and comparison succeeds. Existing output directories are never overwritten. A cap, timeout, or failure to construct a witness returns failure or `UNKNOWN`; it never certifies equivalence.
 
@@ -94,7 +94,7 @@ The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds an
 - `proofs/` — four standalone proof notes aligned with the manuscript.
 - `inputs/` — all generated cases, mutations, tiny model, public SQL, manifest, and negative screen.
 - `results/` — complete certificates, witnesses, partitions, oracle records, engine results, logs, and summaries.
-- `tests/` — 58 deterministic regression tests.
+- `tests/` — 54 main regression methods and two separately invoked suffix regressions.
 - `claim_evidence_ledger.csv` — every material claim mapped to proof/check/result/table and maturity.
 - `external_resources.csv` — source, URL, license/access note, acquisition, and integration inventory.
 - `reference-verification.csv` — records for all 50 cited bibliography keys: 41 historical rows retained and nine added primary-source metadata/bounded-context checks, with each check's extent in its notes. The added rows do not certify complete-source reading.
@@ -112,7 +112,7 @@ optimized interpreter mode. CI runs both modes before the unchanged 54-method
 reproduction census. Paper-build tests remain in the manuscript package, so
 the standalone artifact has no dependency on a sibling paper directory.
 
-Four further methods test the distinguishing-suffix refinement bound and build-log handling. The finite bound check enumerates all 4,330 binary-output unary machines through four states and checks tight chains through eight states; the general bound follows from the proof in `proofs/quotient.md`. Build-log tests accept positive page counts without requiring the historical 42 pages, and reject missing or empty output reports without launching TeX. These four methods passed as component checks; the full 58-method resource-bounded reproduction has not been rerun.
+The general distinguishing-suffix bound follows from `proofs/quotient.md`.
 
 ## Interpretation and external-use boundary
 
