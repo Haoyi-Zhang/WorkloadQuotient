@@ -25,8 +25,25 @@ This directory contains the frozen scientific outputs used by the manuscript and
 
 The independent JOB negative screen is under `../inputs/job-negative/`; `../inputs/public-screening.csv` is only the 181-pair SQLSolver positive-source screening table. JOB is not included in the positive public-case count.
 
+## Native snapshot study
+
+`native-study/` is separate from the frozen five-stage results. `workload.json`
+and `certificate.json` contain the composed sixteen-state public-query
+workload, its eight-state quotient and 28 cross-block separators.
+`trials.jsonl` contains all 120 complete lifecycle trials; `summary.json`
+contains the forty condition medians/ranges, actual environment versions and
+both 64-database no-NULL native replay records. See `../NATIVE-STUDY.md` for
+the data, five runners, update schedule, cost accounting and commands.
+
+The native study preserves unfavorable and near-equal outcomes. Quotient-block
+caching has more cache keys than current-output caching, and reducing routing
+states alone does not reduce the latter's native SQL executions. Database
+tuples are identical across runners. Loaded native data are not generated
+countermodels governed by the 128-tuple witness cap. These generated, warm
+snapshot measurements do not establish production or general optimizer gains.
+
 ## Logs
 
 `logs/` contains the frozen command outputs corresponding to the final recorded campaigns. Reproduction writes fresh logs into its chosen output directory and does not overwrite these records.
 
-These outputs are finite evidence. They do not by themselves prove the general theorems, establish external review, or imply performance, optimizer, or general-SQL claims.
+These outputs are finite evidence. They do not by themselves prove the general theorems or establish external review. Native cost results apply to the stated workload and protocol, not to general performance, optimizer behavior, or SQL semantics.

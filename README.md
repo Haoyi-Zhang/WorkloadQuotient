@@ -15,7 +15,7 @@ The repository supports these paper claims:
 - an exact graph reduction with minimum `n - 1 + 2m + chromatic_number(G)` and NP-complete combined complexity; and
 - a replayable certificate whose reachability, containment maps, partition, transition congruence, and actual separating databases are checked separately.
 
-No general SQL, cyclic-dependency, null, update, recursion, aggregate, inequality, disjunction, learned-model, natural-language, latency, optimizer-cost, deployment, or 128-tuple small-model claim is made. The latest small-counterexample literature is treated as prior existence theory; the delta here is exact legal-image minimization and its tight families/complexity.
+No general SQL, cyclic-dependency, null, update-transition, recursion, aggregate, inequality, disjunction, learned-model, natural-language, production-latency, deployment, or 128-tuple small-model claim is made. The optional native snapshot study measures a bounded lifecycle cost, with legal updates between read-only traces rather than update actions in the theorem. The latest small-counterexample literature is treated as prior existence theory; the delta here is exact legal-image minimization and its tight families/complexity.
 
 ## Full reproduction
 
@@ -68,7 +68,9 @@ Exit code 0 is a successful finite check/generation; 1 is rejection or an I/O/in
 | SQLite query executions | 1,024 | `results/public/sqlite-replay.json` |
 | SQLite-set to hand-written-CQ-set comparisons | 1,024, all equal | `results/public/sqlite-replay.json` |
 | Corrupted-adapter negative control | 40/64 databases expose the error | `results/public/sqlite-replay.json` |
-| DuckDB | not run: package unavailable | `results/engine-status.json` |
+| Historical DuckDB status | not run on the original host | `results/engine-status.json` |
+| New no-NULL native replay | per engine: 64 databases, 1,024 SQL executions and 1,024 SQL--CQ set comparisons, all agree | `results/native-study/summary.json` |
+| Native lifecycle study | 120 trials; five runners; all snapshot results agree | `results/native-study/` |
 
 The sixteen cascades are parameter cases of one construction, the eight graph controls are generated controls rather than public workloads, and the twenty-four ablations are not independent workload families. Finite counts validate implementations and exact instances; universal claims rely on proofs.
 
@@ -82,7 +84,45 @@ The original JOB `1a`–`1d`, `2a`–`2d` sample is retained separately under `i
 
 Positive public evidence comes from SQLSolver's Calcite equivalence tests at commit `dcc2a91d8971a4c4d30b055f99d7d8428a1b754b`, redistributed under Apache-2.0 with its license and notice. `inputs/public/manifest.json` records source lines, exact SQL, schema, and the admission rule. The eight CQ adapters are hand-written, not parser output. `inputs/public/adapter-contracts.json` and `ADAPTER-CONTRACTS.md` specify column positions, projections, equalities, output types, and the finite SQL-null correspondence; tests require those records to match the executable cases. Each two-state pair has a one-state quotient certificate.
 
-The retained host reports SQLite 3.46.1, but that version string is environment metadata rather than a claim-bearing equality field. SQLite evaluates all sixteen original statements on sixty-four deterministic legal databases: the 1,024 SQL executions agree within each pair for bags and sets. The same run performs 1,024 per-side set comparisons against the hand-written CQ adapters; all agree, while a corrupted projection is detected on 40 databases. Fifty SQL input cells contain `None`; each is mapped to a distinct fresh integer only for this finite adapter check. The theory itself has no nulls. DuckDB is explicitly `NOT_RUN_PACKAGE_UNAVAILABLE` and is not counted.
+The retained host reports SQLite 3.46.1, but that version string is environment metadata rather than a claim-bearing equality field. SQLite evaluates all sixteen original statements on sixty-four deterministic legal databases: the 1,024 SQL executions agree within each pair for bags and sets. The same run performs 1,024 per-side set comparisons against the hand-written CQ adapters; all agree, while a corrupted projection is detected on 40 databases. Fifty SQL input cells contain `None`; each is mapped to a distinct fresh integer only for this finite adapter check. The theory itself has no nulls. The historical DuckDB record remains `NOT_RUN_PACKAGE_UNAVAILABLE`; the new execution below is separate.
+
+## Native snapshot execution and complete costs
+
+[NATIVE-STUDY.md](NATIVE-STUDY.md) specifies the optional DuckDB/SQLite study,
+five runners, data, updates, complete cost boundary, and portable commands. It
+reuses the original SQL, adapters, schema, producer, and verifier. Its separate
+no-NULL replay passes 1,024 original-SQL executions and 1,024 adapter comparisons
+per engine, detecting the corrupted projection on 40/64 databases in both.
+
+The 120 file-backed trials use SQLite 3.53.1, DuckDB 1.5.6, Python 3.12.14,
+Windows 11 build 28000, an Intel Core i7-12700KF (12 cores/20 logical
+processors), and 34,190,049,280 bytes of physical RAM. Each engine uses one
+worker. Two initial sizes (128/1,024 employees), two reuse levels (80/640 total
+requests), five runners and three repetitions include four committed,
+result-changing update transactions and final close/reopen verification.
+
+The composed public-query workload has 16 reachable control states, 8 quotient
+states and 4 current-output classes. A cache keyed by quotient state makes 40
+workload SQL executions over five snapshots; output-equivalence caching makes
+20, with either original or quotient routing. Both matched-information runners
+are charged the same full certificate construction and checking. At 1,024
+employees and 640 requests, median full totals are 171.153/163.913 ms for
+SQLite original/quotient routing with output caching, and 245.164/247.929 ms for
+DuckDB. These three-repetition observations do not establish a stable routing
+speedup. At 128 employees and 80 requests, SQLite quotient-block caching costs
+42.236 ms versus 40.519 ms direct execution, despite fewer native workload
+executions. No database tuples are removed; final file sizes are unchanged
+between runners within an engine and data size.
+
+All original-statement validation, loading, certificate setup, updates,
+checkpoint/close and reopen validation are inside the outer totals. The 112
+validation SQL executions per trial are separate from workload execution
+counts. Validation warms the engine before request timing. Raw trials, stage
+medians/ranges, settings, the composed workload and its 28-separator certificate
+are retained in `results/native-study/`; this study does not overwrite the
+original resource measurements or change the five-stage reproduction census.
+Seven additional native regressions are run directly as described in the study
+document, outside that census.
 
 ## Resource contract
 

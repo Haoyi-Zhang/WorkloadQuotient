@@ -1,1 +1,1 @@
-"""Finite set-CQ workload certificates; no general SQL or latency claims."""
+"""Finite set-CQ certificates and an optional native snapshot cost study."""
