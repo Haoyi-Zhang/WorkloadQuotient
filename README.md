@@ -19,7 +19,7 @@ No general SQL, cyclic-dependency, null, update-transition, recursion, aggregate
 
 ## Full reproduction
 
-Use Linux/POSIX with Python 3.10 or newer. The reproduction uses only the Python standard library and requires no network access or package installation. Choose a new, nonexistent output directory:
+Use Linux with Python 3.10 or newer. The complete wrapper uses `/proc/self/status`, CPU affinity, and POSIX resource limits; it does not run on macOS or native Windows. The reproduction uses only the Python standard library and requires no network access or package installation. Choose a new, nonexistent output directory:
 
 ```sh
 python3 reproduce.py --output ../workload-reproduction
@@ -82,7 +82,7 @@ For every cascade case, the syntax machine has eight reachable states, current o
 
 The original JOB `1a`–`1d`, `2a`–`2d` sample is retained separately under `inputs/job-negative/`: all eight use `MIN` and are excluded unchanged. The manifest records the pinned commit, immutable Git blob identifiers, minimal excerpts, and exclusion reasons. Because the JOB mirror declares no repository license, complete query files are not redistributed. This is neither a full-JOB census nor a transformed-query experiment.
 
-Positive public evidence comes from SQLSolver's Calcite equivalence tests at commit `dcc2a91d8971a4c4d30b055f99d7d8428a1b754b`, redistributed under Apache-2.0 with its license and notice. `inputs/public/manifest.json` records source lines, exact SQL, schema, and the admission rule. The eight CQ adapters are hand-written, not parser output. `inputs/public/adapter-contracts.json` and `ADAPTER-CONTRACTS.md` specify column positions, projections, equalities, output types, and the finite SQL-null correspondence; tests require those records to match the executable cases. Each two-state pair has a one-state quotient certificate.
+Positive public evidence comes from SQLSolver's Calcite equivalence tests at commit `dcc2a91d8971a4c4d30b055f99d7d8428a1b754b`, redistributed under Apache-2.0 with its license and notice. `inputs/public/manifest.json` records source lines, exact SQL, schema, and the admission rule. The eight CQ adapters are hand-written, not parser output. `inputs/public/adapter-contracts.json` and `inputs/public/ADAPTER-CONTRACTS.md` specify column positions, projections, equalities, output types, and the finite SQL-null correspondence; tests require those records to match the executable cases. Each two-state pair has a one-state quotient certificate.
 
 The retained host reports SQLite 3.46.1, but that version string is environment metadata rather than a claim-bearing equality field. SQLite evaluates all sixteen original statements on sixty-four deterministic legal databases: the 1,024 SQL executions agree within each pair for bags and sets. The same run performs 1,024 per-side set comparisons against the hand-written CQ adapters; all agree, while a corrupted projection is detected on 40 databases. Fifty SQL input cells contain `None`; each is mapped to a distinct fresh integer only for this finite adapter check. The theory itself has no nulls. The historical DuckDB record remains `NOT_RUN_PACKAGE_UNAVAILABLE`; the new execution below is separate.
 
@@ -121,7 +121,7 @@ counts. Validation warms the engine before request timing. Raw trials, stage
 medians/ranges, settings, the composed workload and its 28-separator certificate
 are retained in `results/native-study/`; this study does not overwrite the
 original resource measurements or change the five-stage reproduction census.
-Seven additional native regressions are run directly as described in the study
+Eight additional native regressions are run directly as described in the study
 document, outside that census.
 
 ## Resource contract

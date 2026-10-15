@@ -1,10 +1,12 @@
 # Third-party material and research provenance
 
-The executable repository uses only the Python standard library. It does not
-vendor a database engine, solver, learned model, benchmark dataset, or third-party
-implementation. Its generated models and databases are retained in full. Source
-URLs and the licenses that were actually established are listed in
-`external_resources.csv`.
+The core implementation and original reproduction use only the Python standard
+library. The optional native snapshot study additionally requires the pinned,
+MIT-licensed DuckDB package in `requirements-native-study.txt`; no database engine
+or third-party implementation is vendored. The selected SQLSolver queries and
+schema are redistributed under Apache-2.0 with their license and notice in
+`third_party/sqlsolver/`. Generated models and databases are retained in full.
+Source URLs and established licenses are listed in `external_resources.csv`.
 
 The independent JOB negative screen under `inputs/job-negative/` retains only
 the minimal `SELECT MIN(...)` excerpts needed to explain exclusion, the pinned

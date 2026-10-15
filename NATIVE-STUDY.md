@@ -99,11 +99,19 @@ record or establish SQL NULL semantics.
 
 ## Commands and outputs
 
-Run from the artifact root with its `src` directory on `PYTHONPATH`. Install
-DuckDB in a private virtual environment or target directory, never by changing
-the system Python for this experiment. The recorded package is DuckDB 1.5.6.
+Run from the artifact root with Python 3.10 or newer. The following POSIX-shell
+setup installs the pinned DuckDB 1.5.6 dependency in a private virtual
+environment and exposes the local source package. Replace the absolute paths
+with your own locations outside this repository.
 
 ```sh
+python3 -m venv /absolute/private-native-venv
+. /absolute/private-native-venv/bin/activate
+python -m pip install -r requirements-native-study.txt
+export PYTHONPATH="$PWD/src"
+export PYTHONDONTWRITEBYTECODE=1
+mkdir -p /absolute/private-scratch
+
 python -B -m workload_identifiability.native_study \
   --output /absolute/new-native-results \
   --work /absolute/new-private-database-directory
@@ -111,7 +119,10 @@ python -B tests/regression_native_study.py --work /absolute/private-scratch -v
 python -B -O tests/regression_native_study.py --work /absolute/private-scratch -v
 ```
 
-The output/work directories must be fresh; no existing results are overwritten.
+The study's `--output` and `--work` directories must not yet exist; no existing
+results are overwritten. The eight-test regression script instead requires an
+existing writable `--work` scratch directory and creates temporary children
+inside it. It reports any unavailable optional DuckDB checks explicitly.
 The retained scientific outputs are `results/native-study/workload.json`,
 `certificate.json`, `trials.jsonl`, and `summary.json`. The summary contains
 environment versions, all 40 condition medians and ranges, both native replay
