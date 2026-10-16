@@ -3,7 +3,11 @@ from __future__ import annotations
 from copy import deepcopy
 from itertools import product, combinations
 from pathlib import Path
-import csv, json, os, resource, signal, time
+import csv, json, os, signal, time
+try:
+    import resource
+except ImportError:
+    resource = None
 from .core import produce, chase, containment, validate_model, BoundExceeded
 from .families import cascade, plan, minimum_witness, minimum_counts
 from .verify import verify, legal_database, evaluate, InvalidCertificate
@@ -116,6 +120,8 @@ def scope_controls(out):
 
 
 def apply_limits():
+    if resource is None or not hasattr(signal, 'SIGALRM'):
+        raise RuntimeError('The resource-limited campaign requires Linux; portable semantic helpers remain available.')
     if hasattr(os,'sched_getaffinity'):
         os.sched_setaffinity(0,{min(os.sched_getaffinity(0))})
     resource.setrlimit(resource.RLIMIT_AS,(int(2.5*1024**3),int(2.5*1024**3)))

@@ -31,6 +31,8 @@ jobs:
           mkdir -p "$RUNNER_TEMP/p064-scientific-raw"
           ulimit -v 2621440
           ulimit -t 240
+          python -B tests/regression_platform.py \
+            2>&1 | tee "$RUNNER_TEMP/p064-scientific-raw/platform.log"
           python -B tests/regression_suffix_bound.py \
             2>&1 | tee "$RUNNER_TEMP/p064-scientific-raw/suffix-normal.log"
           python -B -O tests/regression_suffix_bound.py \
@@ -50,6 +52,10 @@ jobs:
             2>&1 | tee "$RUNNER_TEMP/p064-scientific-raw/native-normal.log"
           python -B -O tests/regression_native_study.py --work "$RUNNER_TEMP" -v \
             2>&1 | tee "$RUNNER_TEMP/p064-scientific-raw/native-optimized.log"
+      - name: Rebuild and check the proof schematics
+        run: |
+          python -m pip install -r requirements-figures.txt
+          python -B figures/check_figures.py
       - name: Upload raw outputs, including failed or interrupted attempts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

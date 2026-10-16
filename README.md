@@ -124,6 +124,21 @@ original resource measurements or change the five-stage reproduction census.
 Eight additional native regressions are run directly as described in the study
 document, outside that census.
 
+## Proof schematics
+
+The proof schematics have a separate optional drawing dependency:
+
+```sh
+python3 -m pip install -r requirements-figures.txt
+python3 figures/draw_schematics.py
+python3 figures/check_figures.py
+```
+
+The standalone renderer writes the two current vector PDFs in `figures/`,
+checks label bounds, and requires neither TeX nor a sibling manuscript.
+The figure check regenerates both into a temporary directory and compares their
+bytes. These checks are separate from the frozen five-stage scientific census.
+
 ## Resource contract
 
 The wrapper uses one worker, a 2.5 GiB address-space ceiling, 240 CPU seconds and 300 wall seconds per child, zero accepted process swap, no more than 500,000 conservative obligations and 100,000 tiny legal valuations, 256 raw chase records, and 128 materialized tuples per generated witness. The retained five-stage run charged 103,007 main obligations, 4.045533611 CPU seconds and 4.219736089 wall seconds, with 97,324 KiB largest-child RSS, 127,268 KiB parent RSS, and zero process swap. `results/clean-reproduction.json` lists every addend and the checks excluded from that heterogeneous counter. These values establish closure, not speedup.
