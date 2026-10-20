@@ -172,3 +172,7 @@ The general distinguishing-suffix bound follows from `proofs/quotient.md`.
 ## Interpretation and external-use boundary
 
 The frozen artifact is a complete internal research package for the stated fragment, not evidence of acceptance. No independent human proof/code audit was performed. Before any external submission, accountable human authors must independently verify the work and recheck live venue rules.
+
+## Source repository
+
+[WorkloadQuotient](https://github.com/Haoyi-Zhang/WorkloadQuotient)
