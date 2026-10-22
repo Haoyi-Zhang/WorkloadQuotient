@@ -1,6 +1,6 @@
 # Workload Identifiability
 
-This standalone repository contains the implementation, proof notes, frozen inputs, certificates, raw finite results, and provenance ledgers for **Canonical Workload Quotients and the Cost of Distinguishing Databases**. It is complete for the locked internal research scope. The paper's general statements are mathematical theorems; the programs perform finite generation, replay, mutation testing, and independent certificate checks. Successful execution is not a machine-checked proof or independent peer review.
+This standalone repository contains the implementation, proof notes, frozen inputs, certificates, raw finite results, and provenance ledgers for **Canonical Workload Quotients and the Cost of Distinguishing Databases**. The paper's general statements are mathematical theorems; the programs perform finite generation, replay, mutation testing, and independent certificate checks. Successful execution is not a machine-checked proof or independent peer review.
 
 ## Result and scope
 
@@ -168,10 +168,6 @@ reproduction census. Paper-build tests remain in the manuscript package, so
 the standalone artifact has no dependency on a sibling paper directory.
 
 The general distinguishing-suffix bound follows from `proofs/quotient.md`.
-
-## Interpretation and external-use boundary
-
-The frozen artifact is a complete internal research package for the stated fragment, not evidence of acceptance. No independent human proof/code audit was performed. Before any external submission, accountable human authors must independently verify the work and recheck live venue rules.
 
 ## Source repository
 
